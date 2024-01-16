@@ -1,0 +1,260 @@
+.navbar{
+    width: calc(100% - 32px);
+    height: 56px;
+    padding: 4px 16px;
+    background-color: rgb(39, 39, 39);
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.096);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 22;
+}
+.navbar .start{
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding-right: 58px;
+
+}
+
+.navbar .start a{
+    display: flex;
+    align-items: center;
+}
+.navbar .start img{
+    height: 24px;
+}
+.navbar .burger{
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    /* background-color: red; */
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+.navbar .burger svg{
+    height: 24px;
+    fill: rgb(141, 141, 141);
+}
+
+.navbar .burger:hover > svg{
+    fill: white;
+    
+
+}
+
+.navbar .middle{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+}
+.wrapper{
+    width: calc(54% + 20px);
+    min-width: 380px;
+    top: -18px;
+    position: absolute;
+    z-index: 20;
+}
+.wrapper.search-open{
+    display: block;
+}
+
+.bgBlack{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.363);
+    display: none;
+    z-index: 19;
+    left: 0;
+    bottom: 0;
+}
+
+.bgBlack.search-open{
+    display: block;
+}
+
+.search-container{
+    width: 100%;
+    border: 1px solid rgb(99, 99, 99);
+    padding: 5px 0px;
+    padding-left: 0px;
+    border-radius: 3px;
+    transition: opacity 200ms ease-in-out;
+    height: fit-content;
+    
+    
+}
+.search-container .upper-section{
+    width: 100%;
+    display: flex;
+}
+
+
+.search-container.datalist-open,
+.search-container:focus-within{
+    border: 1px solid rgba(99, 99, 99, 0);
+    border-radius: 3px 3px 0px 0px;
+    background-color: rgb(43, 43, 43);
+}
+.search-container input{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    caret-color: white;
+    padding-left: 5px;
+    padding-right: 20px;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+
+}
+.search-container input::placeholder{
+    font-size: 13.5px;
+    font-weight: 500;
+}
+.search-container svg{
+    height: 24px;
+    fill: rgb(110, 110, 110);
+    padding:0px  15px;
+    transform: scale(1.08);
+}
+.search-secondary{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+}
+.search-secondary svg{
+    height: 24px;
+    fill: rgb(110, 110, 110);
+}
+.search-secondary:hover > svg{
+    fill: rgb(189, 189, 189);
+}
+.navbar .end{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    padding-right: 9px;
+    padding-left: 5px;
+}
+.help-icon{
+    display: grid;
+    place-content: center;
+}
+
+.navbar .end svg{
+    height: 24px;
+    fill: rgb(141, 141, 141);
+    cursor: pointer;
+}
+.navbar .end svg:hover{
+    fill: rgb(214, 214, 214);
+}
+
+
+.navbar .end .end-middle{
+    display: flex;
+    gap: .4em;
+    align-items: center;
+    color: white;
+    border: 1px solid rgb(61, 61, 61);
+    padding: 5px 10px;
+    padding-right: 16px;
+    cursor: pointer;
+}
+
+.navbar .end .end-middle p{
+    font-size: 14px;
+    transform: translateY(-1px);
+    font-weight: 500;
+}
+
+.navbar .end .end-middle svg{
+    fill: rgb(253, 66, 66);
+}
+
+.navbar .end .pfpImg{
+    min-height: 32px;
+    min-width: 32px;
+    max-height: 32px;
+    min-height: 32px;
+    display: grid;
+    place-content: center;
+    background-color: rgb(94, 96, 238);
+    color: white;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.search-container:focus-within + .search-datalist,
+.search-container:focus-within + .bgBlack{
+    display: block;
+}
+
+.search-datalist{
+    border: 1px solid rgba(99, 99, 99, 0);
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(43, 43, 43);
+    padding-bottom: 20px;
+    border-radius: 0px 0px 5px 5px ;
+    border-top: 1px solid rgba(128, 128, 128, 0.295);
+    display: none;
+    
+   
+}
+.search-datalist.datalist-open{
+    display: block;
+}
+.search-datalist .upper-section p{
+    font-size: 13px;
+    color: white;
+    padding: 13px 25px;
+    font-weight: 500;
+   
+}
+.search-datalist .upper-section{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.295);
+}
+
+.search-datalist .lower-section{
+    height: 85px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.295);
+
+}
+
+@media(max-width:60em){
+    .wrapper{
+        display: none;
+    }
+   
+    .search-container{
+        background-color: rgb(43, 43, 43);
+    }
+    
+    .search-secondary{
+        display: flex;
+    }
+}
+
+@media(max-width:55em){
+    .search-container{
+        
+       
+    }
+    
+}
+
+
+
+

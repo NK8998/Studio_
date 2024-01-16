@@ -1,0 +1,87 @@
+.content{
+    width: 100%;
+    background-color: rgb(39, 39, 39);
+    height: calc(100vh - 64px);
+}
+
+.content-upper-top{
+    color: white;
+    font-size: 23px;
+    font-weight: 500;
+    padding-left: 10px;
+    padding: 25px 35px;
+}
+
+.route--buttons{
+    display: flex;
+    gap: 4em;
+    padding-left:35px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.247);
+}
+
+.route--button{
+    background-color: transparent;
+    padding: 10px 0px;
+    padding-bottom: 14px;
+    border: none;
+    color: rgb(155, 155, 155);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+.route--button.current::after{
+    content: '';
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    height: 4px;
+    background-color: rgb(25, 121, 247);
+    width: 100%;
+    border-radius: 3px 3px 0px 0px;
+}
+.filter-by{
+    display: flex;
+    gap: 1.9em;
+    padding: 12px 0px;
+    padding-left: 30px;
+    align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.247);
+
+    
+}
+.filter-by input{
+    color: white;
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+.filter-by svg{
+    height: 24px;
+    fill: rgb(155, 155, 155);
+    cursor: pointer;
+}
+
+.movable{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background-color: blue;
+    animation: move infinite 1s;
+}
+
+@keyframes move{
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(500px);
+
+    }
+    100%{
+        transform: translateX(0px);
+
+    }
+}
