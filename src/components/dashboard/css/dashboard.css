@@ -72,11 +72,158 @@
     padding: 10px;
 }
 .innner-card{
-    width: 100%;
+    width: calc(100% - 120px);
     height: 100%;
     border: 1px dashed rgba(128, 128, 128, 0.356);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .5em;
+    padding: 0px 60px;
+    color: rgb(175, 175, 175);
+    font-size: 13px;
+    line-height: 1.3rem;
+}
+.innner-card img{
+    width: 150px;
+}
+.upload-card-hover.show,  .upload-card-hover.show + .bg-black-upload{
+    display: block;
 }
 
+.upload-card-hover{
+    position: fixed;
+    z-index: 24;
+    /* width: 60vw; */
+    min-width: 960px;
+    height: 90vh;
+    background-color: rgb(36, 36, 36);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    display: none;
+ 
+
+}
+.upload-card-hover .right{
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
+.upload-card-hover .top{
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.973);
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.226);
+    align-items: center;
+}
+.upload-card-hover button.top-row{
+    background-color: transparent;
+    border-radius: 50%;
+    min-height: 33px;
+    max-height: 33px;
+    min-width: 33px;
+    max-width: 33px;
+    margin-top: 0px;
+    display: grid;
+    place-content: center;
+    border: none;
+    cursor: pointer;
+}
+.upload-card-hover button.top-row:active{
+    background-color: grey;
+}
+.upload-card-hover svg{
+    height: 24px;
+    /* width: 100%; */
+    fill: rgb(212, 212, 212);
+}
+
+.upload-card-hover .top{
+    
+}
+
+.upload-card-hover .middle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 150px 200px;
+    gap: 1em;
+}
+.upload-card-hover .middle .middle-text{
+    font-size: 13px;
+    text-align: center;
+    color: rgb(165, 165, 165);
+    margin-top: 15px;
+}
+.upload-card-hover .middle .middle-text :first-child{
+    color: rgb(228, 228, 228);
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.upload-card-hover .middle svg{
+    height: 62px;
+    width: 62px;
+    fill: rgba(255, 255, 255, 0.404);
+}
+.upload-card-hover .middle  #fileUpload-label{
+    background-color: rgb(31, 31, 31);
+    height: 75px;
+    width: 75px;
+    padding: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+
+}
+.bg-black-upload{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.589);
+    height: 100vh;
+    width: 100%;
+    z-index: 23;
+    display: none;
+}
+.innner-card button,
+.upload-card-button{
+    margin-top: 15px;
+    /* width: 120px; */
+    padding: 9px 20px;
+    font-size: 16px;
+    background-color: #3ea6ff;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: 500;
+    color: rgb(34, 34, 34);
+}
+.upload-card-button{
+    font-size: 15px;
+    padding: 9px 15px;
+
+}
+.upload-card-hover .bottom{
+    padding: 20px 50px ;
+    text-align: center;
+    
+    font-size: 12px;
+    color: rgb(167, 167, 167);
+}
+.upload-card-hover .bottom span{
+    color: #3ea6ff;
+    cursor: pointer;
+}
+.upload-card-hover .bottom :nth-child(2){
+    margin-top: 10px;
+}
 .secondcard{
     height: 455px;
 }

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const appSlice = createSlice({
   name: "App",
   initialState: {
+    uplodCardVisible: false,
     windowWidth: window.innerWidth,
     expand: true,
     preferresSmallSize: false,
@@ -29,10 +30,12 @@ const appSlice = createSlice({
     updateWindowWidth: (state, action) => {
       state.windowWidth = action.payload;
     },
+    toggleUploadCard: (state, action) => {
+      state.uplodCardVisible = !state.uplodCardVisible;
+    },
   },
 });
 
-export const { toggleNavigationBar, resetNavigationBar, updateWindowWidth } =
-  appSlice.actions;
+export const { toggleNavigationBar, resetNavigationBar, updateWindowWidth, toggleUploadCard } = appSlice.actions;
 
 export default appSlice.reducer;

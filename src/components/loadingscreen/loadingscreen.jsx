@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/loadingscreen.css";
 import { useDispatch } from "react-redux";
-import { userLoggedIn } from "../../../store/Auth-slice";
+import { userLoggedIn } from "../../store/Auth-slice";
 import axios from "axios";
 
 export const LoadingScreen = () => {
@@ -17,15 +17,9 @@ export const LoadingScreen = () => {
     //   window.location.href = `http://localhost:5174?WAA=Studio`;
     // }
 
-    const UrlSCID = window.location.pathname
-      .split("/")
-      .find((urlPart) => urlPart.includes("UC"));
+    const UrlSCID = window.location.pathname.split("/").find((urlPart) => urlPart.includes("UC"));
 
-    if (
-      localStorage.getItem("SCID") &&
-      UrlSCID &&
-      UrlSCID !== JSON.parse(localStorage.getItem("SCID"))
-    ) {
+    if (localStorage.getItem("SCID") && UrlSCID && UrlSCID !== JSON.parse(localStorage.getItem("SCID"))) {
       document.write("You do not have permission to view this page");
     } else if (!localStorage.getItem("SCID") || !localStorage.getItem("SUID")) {
       setCredentials();
