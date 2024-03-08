@@ -35,21 +35,12 @@ const TempUpload = () => {
       <div className='leftNav--and--mainpage'>
         <div>leftNAv</div>
         <div className='mainpage'>
-          <form
-            onSubmit={handleSubmit}
-            encType='multipart/form-data'
-            className='dashboard--form'
-          >
+          <form onSubmit={handleSubmit} encType='multipart/form-data' className='dashboard--form'>
             <label htmlFor='video'>Upload video</label>
-            <input
-              type='file'
-              name='video'
-              onChange={handlechange}
-              id='video'
-            />
-            <input type='file' name='thumbnail' onChange={handlechange} />
-            <input type='text' name='title' onChange={handlechange} />
-            <input type='text' name='category' onChange={handlechange} />
+            <input type='file' name='video' id='video' />
+            <input type='file' name='thumbnail' />
+            <input type='text' name='title' />
+            <input type='text' name='category' />
             <textarea
               name='Description'
               type='text'

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleUploadCard } from "../../../store/App-slice";
 import { FeedbackIcon } from "../../../assets/leftnavelements";
 import { CloseIcon, UploadIcon } from "../../../assets/uploadcardelements";
+import { nanoid } from "@reduxjs/toolkit";
+import AxiosFetching from "../../../axios/axios-function";
 
 export const FirstCard = () => {
   const dispatch = useDispatch();
@@ -23,7 +25,47 @@ export const FirstCard = () => {
 
 export const UploadCard = ({}) => {
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.auth.userData);
   const uplodCardVisible = useSelector((state) => state.App.uplodCardVisible);
+  const { currentChannelId } = userData;
+
+  const [currentVideoId, setCurrentVideoId] = useState();
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+
+  //   const formData = new FormData();
+  //   formData.append("video", event.target.video.files[0]);
+  //   formData.append("title", event.target.title.value);
+  //   formData.append("channelID", currentChannelId);
+  //   formData.append("Category", event.target.category.value);
+  //   formData.append("Description", event.target.Description.value);
+
+  //   axios
+  //     .post("http://54.82.119.53:5573/transcode", formData)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
+  function handleChange(event) {
+    const file = event.target.files[0];
+    const { name } = file;
+    const videoId = nanoid(11);
+    setCurrentVideoId(videoId);
+
+    const formData = new FormData();
+    formData.append("video", event.target.files[0]);
+    formData.append("title", name);
+    formData.append("channelID", currentChannelId);
+    formData.append("videoId", videoId);
+
+    AxiosFetching("post", "/upload", formData).then((response) => {
+      console.log(response.data);
+    });
+  }
+
   return (
     <>
       <div className={`upload-card-hover ${uplodCardVisible ? "show" : ""}`}>
@@ -39,16 +81,15 @@ export const UploadCard = ({}) => {
           </div>
         </div>
         <div className='middle'>
-          <input type='file' id='fileUpload' style={{ display: "none" }} />
-          <label for='fileUpload' id='fileUpload-label'>
+          <input type='file' id='fileUpload' name='video' style={{ display: "none" }} onChange={handleChange} />
+          <label htmlFor='fileUpload' id='fileUpload-label'>
             <UploadIcon />
           </label>
           <div className='middle-text'>
             <p>Drag and drop video files to upload</p>
             <p>Your videos will be private until you publish them.</p>
           </div>
-          <input type='file' id='upload-card-input' style={{ display: "none" }} />
-          <label for='fileUpload' className='upload-card-button'>
+          <label htmlFor='fileUpload' className='upload-card-button'>
             SELECT FILES
           </label>
         </div>

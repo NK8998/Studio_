@@ -32,7 +32,7 @@ export const Navbar = ({}) => {
       </div>
       <div className='middle'>
         <div className={`wrapper ${datalistDropdownOpen ? "search-open" : ""}`}>
-          <div className={`search-container `}>
+          <div className={`search-container ${datalistDropdownOpen ? "datalist-open" : ""}`}>
             <div className='upper-section'>
               <SearchIcon />
               <input
@@ -43,9 +43,9 @@ export const Navbar = ({}) => {
                 onFocus={() => {
                   setDataListDropdown(true);
                 }}
-                onBlur={() => {
-                  setDataListDropdown(false);
-                }}
+                // onBlur={() => {
+                //   setDataListDropdown(false);
+                // }}
               />
             </div>
           </div>

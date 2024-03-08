@@ -97,19 +97,19 @@
     z-index: 24;
     /* width: 60vw; */
     min-width: 960px;
-    height: 90vh;
+    height: 730px;
     background-color: rgb(36, 36, 36);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 12px;
+    border-radius: 6px;
     display: none;
  
 
 }
 .upload-card-hover .right{
     display: flex;
-    gap: .5em;
+    gap: .4em;
     align-items: center;
 }
 .upload-card-hover .top{
@@ -118,7 +118,7 @@
     font-weight: 500;
     color: rgba(255, 255, 255, 0.973);
     justify-content: space-between;
-    padding: 15px 30px;
+    padding: 15px 20px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.226);
     align-items: center;
 }
@@ -136,7 +136,7 @@
     cursor: pointer;
 }
 .upload-card-hover button.top-row:active{
-    background-color: grey;
+    background-color: rgba(133, 133, 133, 0.836);
 }
 .upload-card-hover svg{
     height: 24px;

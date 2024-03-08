@@ -196,8 +196,12 @@
     cursor: pointer;
 }
 
-.search-container:focus-within + .search-datalist,
+/* .search-container:focus-within + .search-datalist,
 .search-container:focus-within + .bgBlack{
+    display: block;
+} */
+.search-container.datalist-open + .search-datalist,
+.search-container.datalist-open .bgBlack{
     display: block;
 }
 
