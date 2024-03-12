@@ -1,8 +1,6 @@
 import axios from "axios";
 
-export default async function AxiosFetching(method, endpoint, formData) {
-  const backendUrl = "http://localhost:8220";
-
+export default async function AxiosFetching(method, endpoint, formData, backendUrl = "http://localhost:8220") {
   try {
     const config = {
       method: method,
@@ -10,6 +8,8 @@ export default async function AxiosFetching(method, endpoint, formData) {
       data: formData,
       withCredentials: true,
     };
+
+    console.log(config);
 
     const axiosResponse = await axios(config);
     const response = { data: axiosResponse.data, error: null };
