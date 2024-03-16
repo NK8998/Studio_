@@ -58,7 +58,7 @@ export const UploadCard = ({}) => {
     const formData = new FormData();
     formData.append("video", event.target.files[0]);
     formData.append("title", name);
-    formData.append("channelID", currentChannelId);
+    formData.append("channelId", currentChannelId);
     formData.append("videoId", videoId);
 
     AxiosFetching("post", "upload", formData).then((response) => {
