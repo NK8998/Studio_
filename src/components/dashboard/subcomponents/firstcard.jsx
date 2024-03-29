@@ -27,28 +27,11 @@ export const UploadCard = ({}) => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth.userData);
   const uplodCardVisible = useSelector((state) => state.App.uplodCardVisible);
-  const { currentChannelId } = userData;
+  const { channel_id, handle, display_name } = userData;
+  console.log(userData);
 
   const [currentVideoId, setCurrentVideoId] = useState();
-  // function handleSubmit(event) {
-  //   event.preventDefault();
 
-  //   const formData = new FormData();
-  //   formData.append("video", event.target.video.files[0]);
-  //   formData.append("title", event.target.title.value);
-  //   formData.append("channelID", currentChannelId);
-  //   formData.append("Category", event.target.category.value);
-  //   formData.append("Description", event.target.Description.value);
-
-  //   axios
-  //     .post("http://54.82.119.53:5573/transcode", formData)
-  //     .then((response) => {
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
   function handleChange(event) {
     const file = event.target.files[0];
     const { name } = file;
@@ -56,9 +39,11 @@ export const UploadCard = ({}) => {
     setCurrentVideoId(videoId);
 
     const formData = new FormData();
+    formData.append("displayName", display_name);
+    formData.append("handle", handle);
     formData.append("video", event.target.files[0]);
     formData.append("title", name);
-    formData.append("channelId", currentChannelId);
+    formData.append("channelId", channel_id);
     formData.append("videoId", videoId);
 
     AxiosFetching("post", "upload", formData).then((response) => {

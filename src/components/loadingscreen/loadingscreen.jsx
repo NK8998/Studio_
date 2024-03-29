@@ -11,12 +11,6 @@ export const LoadingScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // set both userID and channelID in localStorage and in cookie. LocalStorage for quick check.
-    // check user's cookie if it does not exist then redirect to OAuth. Keep the target url then redirect back here
-    // fetch user's data using the cookie
-    // if (!localStorage.getItem("SCID") || !localStorage.getItem("SUID")) {
-    //   window.location.href = `http://localhost:5174?WAA=Studio`;
-    // }
     const UrlSCID = window.location.pathname.split("/").find((urlPart) => urlPart.includes("UC"));
     if (localStorage.getItem("SCID") && UrlSCID && UrlSCID !== JSON.parse(localStorage.getItem("SCID"))) {
       document.write("You do not have permission to view this page");
@@ -39,7 +33,7 @@ export const LoadingScreen = () => {
         if (response.data.message !== "verified") {
           document.write("Token mismatch");
         } else {
-          const userData = { currentChannelId: SCID };
+          const userData = response.data.user_data[0] ? response.data.user_data[0] : {};
           dispatch(userLoggedIn(userData));
           if (window.location.pathname === "/") {
             navigate(`/channel/${SCID}`);
@@ -60,7 +54,7 @@ export const LoadingScreen = () => {
           localStorage.setItem("SCID", JSON.stringify(SCID));
           localStorage.setItem("SUID", JSON.stringify(SUID));
 
-          const userData = { currentChannelId: SCID };
+          const userData = response.data.user_data[0] ? response.data.user_data[0] : {};
           dispatch(userLoggedIn(userData));
           if (window.location.pathname === "/") {
             navigate(`/channel/${SCID}`);

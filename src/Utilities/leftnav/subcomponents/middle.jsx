@@ -20,93 +20,44 @@ export const Middle = ({ expand }) => {
   const currentLocation = useLocation();
   useEffect(() => {}, [currentLocation]);
 
-  const currentChannelId = useSelector(
-    (state) => state.auth.userData.currentChannelId
-  );
+  const userData = useSelector((state) => state.auth.userData);
+  const { channel_id } = userData;
 
   return (
     <div className={`leftnav-middle ${expand ? "expand" : "collapse"}`}>
-      <Link to={`/channel/${currentChannelId}`}>
-        <button
-          className={`middle-container ${
-            location === `/channel/${currentChannelId}` ? "current" : ""
-          } ${expand ? "expand" : "collapse"}`}
-        >
-          {location === `/channel/${currentChannelId}` ? (
-            <DashboardIconCurrent />
-          ) : (
-            <DashboardIconNotCurrent />
-          )}
+      <Link to={`/channel/${channel_id}`}>
+        <button className={`middle-container ${location === `/channel/${channel_id}` ? "current" : ""} ${expand ? "expand" : "collapse"}`}>
+          {location === `/channel/${channel_id}` ? <DashboardIconCurrent /> : <DashboardIconNotCurrent />}
           <p>Dashboard</p>
         </button>
       </Link>
-      <Link to={`/channel/${currentChannelId}/videos/upload`}>
-        <button
-          className={`middle-container ${
-            location.includes("videos") ? "current" : ""
-          } ${expand ? "expand" : "collapse"}`}
-        >
-          {location.includes("videos") ? (
-            <ContentIconCurrent />
-          ) : (
-            <ContentIconNotCurrent />
-          )}
+      <Link to={`/channel/${channel_id}/videos/upload`}>
+        <button className={`middle-container ${location.includes("videos") ? "current" : ""} ${expand ? "expand" : "collapse"}`}>
+          {location.includes("videos") ? <ContentIconCurrent /> : <ContentIconNotCurrent />}
           <p>Content</p>
         </button>
       </Link>
-      <Link to={`/channel/${currentChannelId}/analytics`}>
-        <button
-          className={`middle-container ${
-            location.includes("analytics") ? "current" : ""
-          } ${expand ? "expand" : "collapse"}`}
-        >
-          {location.includes("analytics") ? (
-            <AnalyticsIconCurrent />
-          ) : (
-            <AnalyticsIconNotCurrent />
-          )}
+      <Link to={`/channel/${channel_id}/analytics`}>
+        <button className={`middle-container ${location.includes("analytics") ? "current" : ""} ${expand ? "expand" : "collapse"}`}>
+          {location.includes("analytics") ? <AnalyticsIconCurrent /> : <AnalyticsIconNotCurrent />}
           <p>Analytics</p>
         </button>
       </Link>
-      <Link to={`/channel/${currentChannelId}/comments`}>
-        <button
-          className={`middle-container ${
-            location.includes("comments") ? "current" : ""
-          } ${expand ? "expand" : "collapse"}`}
-        >
-          {location.includes("comments") ? (
-            <CommentsIconCurrent />
-          ) : (
-            <CommentsIconNotCurrent />
-          )}
+      <Link to={`/channel/${channel_id}/comments`}>
+        <button className={`middle-container ${location.includes("comments") ? "current" : ""} ${expand ? "expand" : "collapse"}`}>
+          {location.includes("comments") ? <CommentsIconCurrent /> : <CommentsIconNotCurrent />}
           <p>Comments</p>
         </button>
       </Link>
-      <Link to={`/channel/${currentChannelId}/subtitles`}>
-        <button
-          className={`middle-container ${
-            location.includes("subtitles") ? "current" : ""
-          } ${expand ? "expand" : "collapse"}`}
-        >
-          {location.includes("subtitles") ? (
-            <SubtitlesIconCurrent />
-          ) : (
-            <SubtitlesIconNotCurrent />
-          )}
+      <Link to={`/channel/${channel_id}/subtitles`}>
+        <button className={`middle-container ${location.includes("subtitles") ? "current" : ""} ${expand ? "expand" : "collapse"}`}>
+          {location.includes("subtitles") ? <SubtitlesIconCurrent /> : <SubtitlesIconNotCurrent />}
           <p>Subtitles</p>
         </button>
       </Link>
-      <Link to={`/channel/${currentChannelId}/editing`}>
-        <button
-          className={`middle-container ${
-            location.includes("editing") ? "current" : ""
-          } ${expand ? "expand" : "collapse"}`}
-        >
-          {location.includes("editing") ? (
-            <CustomizationIconCurrent />
-          ) : (
-            <CustomizationIconNotCurrent />
-          )}
+      <Link to={`/channel/${channel_id}/editing`}>
+        <button className={`middle-container ${location.includes("editing") ? "current" : ""} ${expand ? "expand" : "collapse"}`}>
+          {location.includes("editing") ? <CustomizationIconCurrent /> : <CustomizationIconNotCurrent />}
           <p>Customization</p>
         </button>
       </Link>
