@@ -3,7 +3,7 @@ import { FeedbackIcon } from "../../../../assets/leftnavelements";
 import { CloseIcon, UploadIcon } from "../../../../assets/uploadcardelements";
 import AxiosFetching from "../../../../axios/axios-function";
 import { nanoid } from "@reduxjs/toolkit";
-import { subscribeToSupabase, updateCurrentVideo } from "../../../../store/Upload-slice";
+import { subscribeToSupabase, updateCurrentVideo, updateCurrentVideoId } from "../../../../store/Upload-slice";
 import { toggleUploadCard } from "../../../../store/App-slice";
 
 export default function UploadBegin() {
@@ -16,6 +16,7 @@ export default function UploadBegin() {
     const { name } = file;
     const videoId = nanoid(11);
 
+    dispatch(updateCurrentVideoId(videoId));
     dispatch(subscribeToSupabase(videoId));
 
     const formData = new FormData();

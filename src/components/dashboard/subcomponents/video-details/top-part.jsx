@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { FeedbackIcon } from "../../../../assets/leftnavelements";
 import { CloseIcon } from "../../../../assets/uploadcardelements";
 import { toggleUploadCard } from "../../../../store/App-slice";
-import { updateCurrentVideo } from "../../../../store/Upload-slice";
+import { updateCurrentVideoId } from "../../../../store/Upload-slice";
 
 export default function TopPart() {
   const dispatch = useDispatch();
   const removeUploadCard = () => {
     dispatch(toggleUploadCard());
-    dispatch(updateCurrentVideo({ video_id: "" }));
+    dispatch(updateCurrentVideoId(""));
   };
 
   return (
