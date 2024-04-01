@@ -6,6 +6,8 @@ import { updateCurrentVideoId } from "../../../../store/Upload-slice";
 
 export default function TopPart() {
   const dispatch = useDispatch();
+  const { title } = useSelector((state) => state.upload.currentVideo);
+  const currentVideoId = useSelector((state) => state.upload.currentVideoId);
   const removeUploadCard = () => {
     dispatch(toggleUploadCard());
     dispatch(updateCurrentVideoId(""));
@@ -13,7 +15,7 @@ export default function TopPart() {
 
   return (
     <div className='top'>
-      <p>Upload videos</p>
+      <p>{currentVideoId.length > 0 ? title : "Upload videos"}</p>
       <div className='right'>
         <button className='top-row'>
           <FeedbackIcon />

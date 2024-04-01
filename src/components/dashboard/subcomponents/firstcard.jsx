@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleUploadCard } from "../../../store/App-slice";
 import UploadBegin from "./video-details/upload-begin";
-import VideoDetails from "./video-details/details-wrapper";
+import VideoDetails from "./video-details/details-wrapper/details-wrapper";
 import TopPart from "./video-details/top-part";
 
 export const FirstCard = () => {
@@ -23,14 +23,13 @@ export const FirstCard = () => {
 
 export const UploadCard = ({}) => {
   const uplodCardVisible = useSelector((state) => state.App.uplodCardVisible);
-  const currentVideo = useSelector((state) => state.upload.currentVideo);
-  const { video_id } = currentVideo;
+  const currentVideoId = useSelector((state) => state.upload.currentVideoId);
 
   return (
     <>
       <div className={`upload-card-hover ${uplodCardVisible ? "show" : ""}`}>
         <TopPart />
-        {video_id ? <VideoDetails /> : <UploadBegin />}
+        {currentVideoId ? <VideoDetails /> : <UploadBegin />}
       </div>
       <div className='bg-black-upload'></div>
     </>

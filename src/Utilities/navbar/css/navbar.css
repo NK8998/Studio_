@@ -183,14 +183,14 @@
     fill: rgb(253, 66, 66);
 }
 
-.navbar .end .pfpImg{
+.navbar .end .pfpImg img{
     min-height: 32px;
     min-width: 32px;
     max-height: 32px;
     min-height: 32px;
     display: grid;
     place-content: center;
-    background-color: rgb(94, 96, 238);
+    background-color: rgb(54, 54, 54);
     color: white;
     border-radius: 100%;
     cursor: pointer;

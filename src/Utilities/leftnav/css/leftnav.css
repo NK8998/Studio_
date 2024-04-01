@@ -33,24 +33,23 @@ a{
 }
 
 
-.leftnav-upper .pfpImg{
-    background-color: rgb(94, 96, 238);
+.leftnav-upper .pfpImg img{
+    background-color: rgb(56, 56, 56);
     color: white;
     display: grid;
     place-content: center;
     border-radius: 100%;
     transition: all 200ms ease-in-out;
 }
-.leftnav-upper .pfpImg.expand{
+
+.leftnav-upper .pfpImg.expand img{
     height: 110px;
     width: 110px;
-    font-size: 60px;
    
 }
-.leftnav-upper .pfpImg.collapse{
+.leftnav-upper .pfpImg.collapse img{
     height: 33px;
     width: 33px;
-    font-size: 16px;
 
 }
 .leftnav-upper-lower{

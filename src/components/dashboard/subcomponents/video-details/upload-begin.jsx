@@ -14,6 +14,7 @@ export default function UploadBegin() {
   function handleChange(event) {
     const file = event.target.files[0];
     const { name } = file;
+    const title = name.split(".").slice(0, -1).join(".");
     const videoId = nanoid(11);
 
     dispatch(updateCurrentVideoId(videoId));
@@ -30,7 +31,7 @@ export default function UploadBegin() {
     const config = {
       onUploadProgress: function (progressEvent) {
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-        const commonPayload = { video_id: videoId, percentCompleted: percentCompleted };
+        const commonPayload = { video_id: videoId, percentCompleted: percentCompleted, title: title };
 
         if (percentCompleted === 100) {
           dispatch(updateCurrentVideo({ ...commonPayload, uploadState: "processing" }));

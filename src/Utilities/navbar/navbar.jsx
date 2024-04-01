@@ -10,6 +10,7 @@ import { toggleNavigationBar } from "../../store/App-slice";
 export const Navbar = ({}) => {
   const dispatch = useDispatch();
   const currentChannelId = useSelector((state) => state.auth.userData.currentChannelId);
+  const { pfp_url } = useSelector((state) => state.auth.userData);
   const [datalistDropdownOpen, setDataListDropdown] = useState(false);
 
   const inputRef = useRef();
@@ -68,7 +69,9 @@ export const Navbar = ({}) => {
           <CreateIcon />
           <p>CREATE</p>
         </div>
-        <div className='pfpImg'>N</div>
+        <div className='pfpImg'>
+          <img src={pfp_url} alt='pfp' />
+        </div>
       </div>
       <div
         className={`bgBlack  ${datalistDropdownOpen ? "search-open" : ""}`}
