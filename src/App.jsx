@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { Navbar } from "./Utilities/navbar/navbar";
-import { LeftNav } from "./Utilities/leftnav/leftnav";
 import { LoadingScreen } from "./components/loadingscreen/loadingscreen";
 import Dashboard from "./components/dashboard/dashboard";
 import Content from "./components/content/content";
@@ -18,6 +16,8 @@ import { Live } from "./components/content/subcomponents/live";
 import { Playlists } from "./components/content/subcomponents/playlists";
 import { Podcasts } from "./components/content/subcomponents/podcasts";
 import { UploadCard } from "./components/dashboard/subcomponents/firstcard";
+import { LeftNav } from "./high-level-components/leftnav/leftnav";
+import { Navbar } from "./high-level-components/navbar/navbar";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);

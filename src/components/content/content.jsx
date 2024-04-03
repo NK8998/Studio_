@@ -6,13 +6,11 @@ import withTransition from "../../Utilities/transition";
 import { useSelector } from "react-redux";
 
 const Content = () => {
-  const currentChannelId = useSelector(
-    (state) => state.auth.userData.currentChannelId
-  );
+  const { channel_id } = useSelector((state) => state.auth.userData);
 
   const navigate = useNavigate();
   const handleRouteChange = (newRoute) => {
-    navigate(`/channel/${currentChannelId}/videos/${newRoute}`);
+    navigate(`/channel/${channel_id}/videos/${newRoute}`);
   };
 
   return (
