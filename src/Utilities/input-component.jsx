@@ -8,21 +8,30 @@ export default function InputComponent({ defaultText, name, upperText, placehold
   const inputRef = useRef();
   const wrapperRef = useRef();
   const dispatch = useDispatch();
+  const timeoutRef = useRef();
 
   useEffect(() => {
     inputRef.current.innerText = defaultText ? defaultText : "";
     setContent(defaultText ? defaultText : "");
     setCharacterNum(defaultText ? defaultText.length : 0);
     dispatch(updateAdditionalData({ [`${name}`]: defaultText }));
+    return () => {
+      clearTimeout(timeoutRef.current);
+    };
   }, [defaultText]);
 
   const handleChange = (event) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
     const input = event.target.innerText;
     if (input.length > limit) {
       // Prevent adding more characters
       const limitedContent = input.slice(0, limit);
       event.target.innerText = limitedContent;
-      dispatch(updateAdditionalData({ [`${name}`]: limitedContent }));
+      timeoutRef.current = setTimeout(() => {
+        dispatch(updateAdditionalData({ [`${name}`]: limitedContent }));
+      }, 200);
       // Place the caret at the end
       const range = document.createRange();
       const sel = window.getSelection();
@@ -34,7 +43,9 @@ export default function InputComponent({ defaultText, name, upperText, placehold
       // Update the state with the new number of characters
       setCharacterNum(input.length);
       setContent(input);
-      dispatch(updateAdditionalData({ [`${name}`]: input }));
+      timeoutRef.current = setTimeout(() => {
+        dispatch(updateAdditionalData({ [`${name}`]: input }));
+      }, 200);
     }
   };
 
