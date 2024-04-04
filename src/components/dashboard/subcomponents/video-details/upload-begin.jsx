@@ -31,7 +31,7 @@ export default function UploadBegin() {
     const config = {
       onUploadProgress: function (progressEvent) {
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-        const commonPayload = { video_id: videoId, percentCompleted: percentCompleted, title: title };
+        const commonPayload = { video_id: videoId, percentCompleted: percentCompleted, title: title, possible_thumbnail_urls: {} };
 
         if (percentCompleted === 100) {
           dispatch(updateCurrentVideo({ ...commonPayload, uploadState: "processing" }));

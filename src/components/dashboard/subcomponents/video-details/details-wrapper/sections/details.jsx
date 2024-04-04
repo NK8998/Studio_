@@ -1,6 +1,10 @@
 import InputComponent from "../../../../../../utilities/input-component";
+import ThumbnailPicker from "./details-components/thumbnail";
+import "./details-components/components.css";
+import { useSelector } from "react-redux";
 
 export default function Details({ curIndex }) {
+  const { title, descriptionString } = useSelector((state) => state.upload.currentVideo);
   return (
     <div className={`details-inner ${curIndex === 0 ? "visible" : ""}`}>
       <div className='section-details-top'>
@@ -10,19 +14,23 @@ export default function Details({ curIndex }) {
       <div className='details-middle'>
         <div className='details-left'>
           <InputComponent
-            name={"details-title"}
+            defaultText={title}
+            name={"title"}
             upperText={"Title (required)"}
             placeholder={"A title that tells your viewers about your video"}
             limit={600}
           />
           <InputComponent
-            name={"description"}
+            name={"descriptionString"}
             upperText={"Description"}
             placeholder={"Tell viewers about your video (type @ to mention a channel)"}
             limit={5000}
           />
+          <ThumbnailPicker />
         </div>
-        <div className='details-right'> </div>
+        <div className='details-right'>
+          <div className='details-right-inner'></div>
+        </div>
       </div>
     </div>
   );

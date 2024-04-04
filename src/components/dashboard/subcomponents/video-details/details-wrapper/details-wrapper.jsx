@@ -11,14 +11,19 @@ export default function VideoDetails() {
   console.log(currentVideo);
   const [curIndex, setCurSection] = useState(0);
 
+  const handleChange = (e) => {
+    console.log({ [e.target.name]: e.target.value });
+  };
   return (
     <div className='details-wrapper'>
       <div className='details-wrapper-inner'>
         <SectionSelector curSection={curIndex} setCurSection={setCurSection} />
-        <Details curIndex={curIndex} />
-        <VideoElements curIndex={curIndex} />
-        <Checks curIndex={curIndex} />
-        <Visibility curIndex={curIndex} />
+        <form onInput={handleChange}>
+          <Details curIndex={curIndex} />
+          <VideoElements curIndex={curIndex} />
+          <Checks curIndex={curIndex} />
+          <Visibility curIndex={curIndex} />
+        </form>
       </div>
       <DetailsBottom />
     </div>

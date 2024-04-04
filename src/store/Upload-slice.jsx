@@ -6,7 +6,8 @@ const uploadSlice = createSlice({
   name: "upload",
   initialState: {
     currentVideoId: "",
-    currentVideo: { video_id: "" },
+    currentVideo: { video_id: "", possible_thumbnail_urls: {} },
+    additionalData: {},
   },
   reducers: {
     updateCurrentVideo: (state, action) => {
@@ -15,10 +16,17 @@ const uploadSlice = createSlice({
     updateCurrentVideoId: (state, action) => {
       state.currentVideoId = action.payload;
     },
+    updateAdditionalData: (state, action) => {
+      const currentData = state.additionalData;
+      state.additionalData = { ...currentData, ...action.payload };
+    },
+    resetAdditionalData: (state, action) => {
+      state.additionalData = {};
+    },
   },
 });
 
-export const { updateCurrentVideo, updateCurrentVideoId } = uploadSlice.actions;
+export const { updateCurrentVideo, updateCurrentVideoId, updateAdditionalData, resetAdditionalData } = uploadSlice.actions;
 
 export default uploadSlice.reducer;
 
@@ -37,6 +45,7 @@ export const subscribeToSupabase = (video_id) => {
         dispatch(updateCurrentVideo({ ...currentVideoData, ...data.new }));
       }
       if (data.new.mpd_url) {
+        dispatch(updateCurrentVideo({ ...currentVideoData, uploadState: "done" }));
         subscription.unsubscribe();
       }
     }
