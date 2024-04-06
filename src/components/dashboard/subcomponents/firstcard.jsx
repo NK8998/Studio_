@@ -26,12 +26,14 @@ export const UploadCard = ({}) => {
   const currentVideoId = useSelector((state) => state.upload.currentVideoId);
 
   return (
-    <>
-      <div className={`upload-card-hover ${uplodCardVisible ? "show" : ""}`}>
-        <TopPart />
-        {currentVideoId ? <VideoDetails /> : <UploadBegin />}
-      </div>
-      <div className='bg-black-upload'></div>
-    </>
+    uplodCardVisible && (
+      <>
+        <div className={`upload-card-hover ${uplodCardVisible ? "show" : ""}`}>
+          <TopPart />
+          {currentVideoId ? <VideoDetails /> : <UploadBegin />}
+        </div>
+        <div className='bg-black-upload'></div>
+      </>
+    )
   );
 };

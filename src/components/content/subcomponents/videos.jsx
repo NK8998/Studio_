@@ -6,7 +6,6 @@ import "./css/video.css";
 
 export const Videos = () => {
   const videos = useSelector((state) => state.videos.videos);
-  console.log(videos);
   const dispatch = useDispatch();
 
   const columns = ["Video", "Visibility", "Restriction", "Date", "Views", "Comments", "Likes (vs dislikes)"];

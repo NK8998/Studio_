@@ -4,7 +4,7 @@ import "./details-components/components.css";
 import { useSelector } from "react-redux";
 
 export default function Details({ curIndex }) {
-  const { title, descriptionString } = useSelector((state) => state.upload.currentVideo);
+  const { title, description_string } = useSelector((state) => state.upload.currentVideo);
   return (
     <div className={`details-inner ${curIndex === 0 ? "visible" : ""}`}>
       <div className='section-details-top'>
@@ -21,6 +21,7 @@ export default function Details({ curIndex }) {
             limit={600}
           />
           <InputComponent
+            defaultText={description_string}
             name={"descriptionString"}
             upperText={"Description"}
             placeholder={"Tell viewers about your video (type @ to mention a channel)"}

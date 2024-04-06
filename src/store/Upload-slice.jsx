@@ -6,7 +6,7 @@ const uploadSlice = createSlice({
   name: "upload",
   initialState: {
     currentVideoId: "",
-    currentVideo: { video_id: "", possible_thumbnail_urls: {} },
+    currentVideo: {},
     additionalData: {},
   },
   reducers: {

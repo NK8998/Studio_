@@ -4,7 +4,7 @@ import { UploadThumbIcon } from "../../../../../../../assets/contentelements";
 import { updateAdditionalData } from "../../../../../../../store/Upload-slice";
 
 export default function ThumbnailPicker() {
-  const { possible_thumbnail_urls } = useSelector((state) => state.upload.currentVideo);
+  const { possible_thumbnail_urls, preferred_thumbnail_url } = useSelector((state) => state.upload.currentVideo);
   const inputRef = useRef();
   const dispatch = useDispatch();
   const [currentThumb, setCurrentThumb] = useState("");
@@ -28,7 +28,7 @@ export default function ThumbnailPicker() {
   const thumbElements = arr.map((thumb, index) => {
     return (
       <div
-        className={`thumb-container ${thumb === currentThumb ? "current" : ""}`}
+        className={`thumb-container ${thumb === currentThumb || preferred_thumbnail_url === thumb ? "current" : ""}`}
         onClick={() => updateThumbString(thumb)}
         key={`${index}-thumb-${thumb}`}
       >

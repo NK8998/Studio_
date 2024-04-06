@@ -21,6 +21,7 @@
 
 
 }
+
 .column-representations{
     white-space: nowrap;
 }
@@ -38,6 +39,15 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.26);
 
 }
+.edit-draft{
+    font-size: 14px;
+    font-weight: 500;
+    color: #3ea6ff;
+    position: absolute;
+    right: 33px;
+    top: 13px;
+    cursor: pointer;
+}
 .column-representations .left-row-sticky{
     padding: 13px 0px;
     padding-left: 30px;
@@ -45,6 +55,7 @@
 .column-representations .right-side-scrollable{
     padding: 13px 0px;
     color: rgb(202, 202, 202);
+    height: fit-content;
 
 }
 
@@ -59,6 +70,7 @@
     position: sticky;
     padding: 8px 0px;
     padding-bottom: 5px;
+    height: calc(100% - 16px);
 
 
 }

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAdditionalData } from "../store/Upload-slice";
+import { PosEnd } from "./place-caret-at-end";
 
 export default function InputComponent({ defaultText, name, upperText, placeholder, limit }) {
   const [charactersNum, setCharacterNum] = useState(0);
@@ -11,10 +12,20 @@ export default function InputComponent({ defaultText, name, upperText, placehold
   const timeoutRef = useRef();
 
   useEffect(() => {
-    inputRef.current.innerText = defaultText ? defaultText : "";
+    const div = inputRef.current;
+    div.innerText = defaultText ? defaultText : "";
     setContent(defaultText ? defaultText : "");
     setCharacterNum(defaultText ? defaultText.length : 0);
     dispatch(updateAdditionalData({ [`${name}`]: defaultText }));
+
+    // Place the caret at the end of the contentEditable div
+    const range = document.createRange();
+    const sel = window.getSelection();
+    range.selectNodeContents(div);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+
     return () => {
       clearTimeout(timeoutRef.current);
     };
@@ -24,31 +35,36 @@ export default function InputComponent({ defaultText, name, upperText, placehold
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    timeoutRef.current = setTimeout(() => {
-      const input = event.target.innerText;
-      if (input.length > limit) {
-        // Prevent adding more characters
-        const limitedContent = input.slice(0, limit);
-        event.target.innerText = limitedContent;
-        dispatch(updateAdditionalData({ [`${name}`]: limitedContent }));
+    const input = event.target.innerText;
+    console.log(input);
+    if (input.length > limit) {
+      // Prevent adding more characters
+      const limitedContent = input.slice(0, limit);
+      const div = event.target;
+      div.innerText = limitedContent;
 
-        // Place the caret at the end
-        const range = document.createRange();
-        const sel = window.getSelection();
-        range.setStart(event.target.childNodes[0], limit);
-        range.collapse(true);
-        sel.removeAllRanges();
-        sel.addRange(range);
-      } else {
-        // Update the state with the new number of characters
-        setCharacterNum(input.length);
-        setContent(input);
-        dispatch(updateAdditionalData({ [`${name}`]: input }));
-      }
-    }, 200);
+      // Place the caret at the end
+      const range = document.createRange();
+      const sel = window.getSelection();
+      range.selectNodeContents(div);
+      range.collapse(false);
+      sel.removeAllRanges();
+      sel.addRange(range);
+
+      timeoutRef.current = setTimeout(() => {
+        dispatch(updateAdditionalData({ [`${name}`]: `${limitedContent}` }));
+      }, 600);
+    } else {
+      // Update the state with the new number of characters
+      setCharacterNum(input.length);
+      setContent(input);
+      timeoutRef.current = setTimeout(() => {
+        dispatch(updateAdditionalData({ [`${name}`]: `${input}` }));
+      }, 600);
+    }
   };
 
-  const focused = () => {
+  const focused = (e) => {
     wrapperRef.current.classList.add("focused");
   };
   const blurred = () => {
@@ -56,7 +72,7 @@ export default function InputComponent({ defaultText, name, upperText, placehold
   };
 
   return (
-    <div className={`input-wrapper ${name}`} ref={wrapperRef}>
+    <div className={`input-wrapper ${name} ${content.length === 0 && name === "title" ? "error" : ""}`} ref={wrapperRef}>
       <p className='upper-text'>{upperText}</p>
       <div className={`placeholder  ${content.length > 0 ? "" : "visible"} `}>{placeholder}</div>
       <div
@@ -64,7 +80,7 @@ export default function InputComponent({ defaultText, name, upperText, placehold
         onFocus={focused}
         onBlur={blurred}
         ref={inputRef}
-        className={`dynamic-details-input ${name}`}
+        className={`dynamic-details-input ${name} `}
         contentEditable={true}
         onInput={handleChange}
       ></div>

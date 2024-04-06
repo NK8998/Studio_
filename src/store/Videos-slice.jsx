@@ -10,10 +10,13 @@ const videosSlice = createSlice({
     updateVideos: (state, action) => {
       state.videos = action.payload; // Set videos array
     },
+    modifyVideos: (state, action) => {
+      state.videos = state.videos.map((video) => (video.video_id === action.payload.video_id ? action.payload : video));
+    },
   },
 });
 
-export const { updateVideos } = videosSlice.actions;
+export const { updateVideos, modifyVideos } = videosSlice.actions;
 
 export default videosSlice.reducer;
 
