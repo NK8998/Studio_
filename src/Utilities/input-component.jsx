@@ -24,29 +24,28 @@ export default function InputComponent({ defaultText, name, upperText, placehold
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    const input = event.target.innerText;
-    if (input.length > limit) {
-      // Prevent adding more characters
-      const limitedContent = input.slice(0, limit);
-      event.target.innerText = limitedContent;
-      timeoutRef.current = setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
+      const input = event.target.innerText;
+      if (input.length > limit) {
+        // Prevent adding more characters
+        const limitedContent = input.slice(0, limit);
+        event.target.innerText = limitedContent;
         dispatch(updateAdditionalData({ [`${name}`]: limitedContent }));
-      }, 200);
-      // Place the caret at the end
-      const range = document.createRange();
-      const sel = window.getSelection();
-      range.setStart(event.target.childNodes[0], limit);
-      range.collapse(true);
-      sel.removeAllRanges();
-      sel.addRange(range);
-    } else {
-      // Update the state with the new number of characters
-      setCharacterNum(input.length);
-      setContent(input);
-      timeoutRef.current = setTimeout(() => {
+
+        // Place the caret at the end
+        const range = document.createRange();
+        const sel = window.getSelection();
+        range.setStart(event.target.childNodes[0], limit);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } else {
+        // Update the state with the new number of characters
+        setCharacterNum(input.length);
+        setContent(input);
         dispatch(updateAdditionalData({ [`${name}`]: input }));
-      }, 200);
-    }
+      }
+    }, 200);
   };
 
   const focused = () => {

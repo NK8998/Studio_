@@ -6,20 +6,24 @@ a{
     width: 255px;
     min-width: 70px;
     background-color: rgb(39, 39, 39);
-    transition: width 200ms ease-in-out;
+    transition: width 200ms ease-in-out, min-width 200ms ease-in-out;
     position: sticky;
     top: 64px;
     overflow: hidden;
     border-right: 1px solid rgba(128, 128, 128, 0.212);
+    display: flex;
+    flex-direction: column;
 
     
 }
 
 .leftnav.expand{
     width: 255px;
+    min-width: 255px;
 }
 .leftnav.collapse{
     width: 70px;
+    min-width: 70px;
 }
 
 .leftnav-upper{
@@ -82,11 +86,13 @@ a{
 }
 
 .leftnav-middle{
-    scrollbar-gutter: stable;
+    flex-grow: 1;
     transition: all 200ms ease-in-out;
-    height: 400px;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.377);
+    height: fit-content;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
 
 .leftnav-middle.expand{
     transform: translateY(18px);
@@ -155,10 +161,12 @@ a{
     white-space: nowrap;
 }
 .leftnav-bottom{
+    position: relative;
+    z-index: 2;
     padding-top: 10px;
-    position: absolute;
-    bottom: 10px;
     width: 100%;
+    background-color: rgb(39, 39, 39);
+    border-top: 1px solid rgba(128, 128, 128, 0.212);
 }
 
 .leftnav-bottom .middle-container{

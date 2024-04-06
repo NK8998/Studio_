@@ -19,6 +19,7 @@ import { UploadCard } from "./components/dashboard/subcomponents/firstcard";
 import { LeftNav } from "./high-level-components/leftnav/leftnav";
 import { Navbar } from "./high-level-components/navbar/navbar";
 import AdditionalDataSubmission from "./utilities/additional-data-submission";
+import { Shorts } from "./components/content/subcomponents/shorts";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -44,6 +45,7 @@ function App() {
               <Route path='/channel/:channelId' element={<Dashboard />} />
               <Route path='/channel/:channelId/videos' element={<Content />}>
                 <Route path={`upload`} element={<Videos />} />
+                <Route path={`shorts`} element={<Shorts />} />
                 <Route path={`live`} element={<Live />} />
                 <Route path={`playlists`} element={<Playlists />} />
                 <Route path={`podcasts`} element={<Podcasts />} />

@@ -13,14 +13,14 @@ export default function AdditionalDataSubmission() {
   useEffect(() => {
     if (!currentVideoId) return;
     const formData = new FormData();
-    formData.append("thumbnailString", thumbnailString);
+    formData.append("thumbnailString", thumbnailString || null);
     thumbnailBlob ? formData.append("thumbnailBlob", document.getElementById("thumbnailBlob").files[0]) : formData.append("thumbnailBlob", null);
     formData.append("videoId", videoId);
     formData.append("title", title);
     formData.append("descriptionString", descriptionString || null);
     formData.append("videoSettings", videoSettings || null);
     formData.append("category", category || null);
-    formData.append("visibility", visibility || null);
+    formData.append("visibility", visibility || "draft");
 
     AxiosFetching("post", "additional-video-data", formData)
       .then((response) => {

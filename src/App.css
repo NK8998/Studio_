@@ -22,6 +22,7 @@
     flex-grow: 1;
     background-color: rgb(32, 32, 32);
     height: calc(100vh - 64px);
+    min-width: 0;
 }
 
 @media(max-width:80em){

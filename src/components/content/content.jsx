@@ -2,8 +2,8 @@ import { FilterIcon } from "../../assets/contentelements";
 import "./css/content.css";
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import withTransition from "../../Utilities/transition";
 import { useSelector } from "react-redux";
+import withTransition from "../../utilities/transition";
 
 const Content = () => {
   const { channel_id } = useSelector((state) => state.auth.userData);
@@ -32,6 +32,14 @@ const Content = () => {
             <button
               className={`route--button`}
               onClick={() => {
+                handleRouteChange("shorts");
+              }}
+            >
+              Shorts
+            </button>
+            <button
+              className={`route--button`}
+              onClick={() => {
                 handleRouteChange("live");
               }}
             >
@@ -53,7 +61,6 @@ const Content = () => {
             >
               Podcasts
             </button>
-            <div className='movable'></div>
           </div>
           <div className='filter-by'>
             <FilterIcon />

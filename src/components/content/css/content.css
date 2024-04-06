@@ -85,3 +85,9 @@
 
     }
 }
+
+@media(max-width: 80em){
+    .content{
+        width: calc(100% - 70px);
+    }
+}
