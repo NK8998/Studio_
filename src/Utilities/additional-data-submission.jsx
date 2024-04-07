@@ -27,8 +27,10 @@ export default function AdditionalDataSubmission() {
 
     AxiosFetching("post", "additional-video-data", formData)
       .then((response) => {
-        dispatch(updateCurrentVideo(response.data.data[1][0]));
-        dispatch(modifyVideos(response.data.data[1][0]));
+        if (response.data) {
+          dispatch(updateCurrentVideo(response.data.data[1][0]));
+          dispatch(modifyVideos(response.data.data[1][0]));
+        }
       })
       .catch((error) => {
         console.error("something went wrong", error);

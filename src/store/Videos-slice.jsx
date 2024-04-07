@@ -26,7 +26,9 @@ export const getUsersVideos = () => {
     if (data.length > 0) return;
     AxiosFetching("get", "get-users-videos", {}, {})
       .then((response) => {
-        dispatch(updateVideos(response.data));
+        if (response.data) {
+          dispatch(updateVideos(response.data));
+        }
       })
       .catch((error) => {
         "display error component";

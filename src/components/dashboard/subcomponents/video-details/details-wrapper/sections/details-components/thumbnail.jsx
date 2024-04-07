@@ -52,10 +52,14 @@ export default function ThumbnailPicker() {
         <input onChange={handleChange} type='file' id='thumbnailBlob' name='thumbnailBlob' style={{ display: "none" }} />
         <input type='text' name='thumbnailString' style={{ display: "none" }} ref={inputRef} />
         <div className='thumb-container pick'>
-          <label htmlFor='thumbnailBlob'>
-            <UploadThumbIcon />
-            <p>Upload thumbnail</p>
-          </label>
+          {preferred_thumbnail_url ? (
+            <img src={preferred_thumbnail_url} alt='preferred thumb' />
+          ) : (
+            <label htmlFor='thumbnailBlob'>
+              <UploadThumbIcon />
+              <p>Upload thumbnail</p>
+            </label>
+          )}
         </div>
         <div className='possible-generated-thumbnails'>
           {thumbElements.length === 0 ? (

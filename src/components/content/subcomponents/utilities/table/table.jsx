@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { DateFormatter } from "../../../../../utilities/date-formatter";
 import { TableVideoComponent } from "./table-video-component";
-import { updateCurrentVideo, updateCurrentVideoId } from "../../../../../store/Upload-slice";
+import { subscribeToSupabase, updateCurrentVideo, updateCurrentVideoId } from "../../../../../store/Upload-slice";
 import { toggleUploadCard } from "../../../../../store/App-slice";
 
 const TableComponent = ({ data, columns }) => {
@@ -32,6 +32,9 @@ const TableComponent = ({ data, columns }) => {
     dispatch(updateCurrentVideoId(tableData.video_id));
     dispatch(updateCurrentVideo({ ...tableData }));
     dispatch(toggleUploadCard());
+    if (!tableData.mpd_url) {
+      dispatch(subscribeToSupabase(tableData.video_id));
+    }
   };
 
   const rowElements = data.map((tableData, index) => {
@@ -44,7 +47,7 @@ const TableComponent = ({ data, columns }) => {
           </div>
           <TableVideoComponent
             id={tableData.video_id}
-            thumbnail={tableData.preferred_thumbnail ? tableData.preferred_thumbnail : tableData.possible_thumbnail_urls["thumbnailUrl-0"]}
+            thumbnail={tableData.preferred_thumbnail_url ? tableData.preferred_thumbnail_url : tableData.possible_thumbnail_urls["thumbnailUrl-0"]}
             title={tableData.title}
             description={tableData.description_string ? tableData.description_string : "Add description"}
             timestamp={tableData.duration_timestamp}
