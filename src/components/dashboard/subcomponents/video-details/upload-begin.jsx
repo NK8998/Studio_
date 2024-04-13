@@ -12,6 +12,7 @@ export default function UploadBegin() {
   const { channel_id, handle, display_name } = userData;
 
   function handleChange(event) {
+    if (!event.target.files[0]) return;
     const file = event.target.files[0];
     const { name } = file;
     const title = name.split(".").slice(0, -1).join(".");

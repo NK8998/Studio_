@@ -22,8 +22,6 @@ export default videosSlice.reducer;
 
 export const getUsersVideos = () => {
   return async (dispatch, getState) => {
-    const data = getState().videos.videos;
-    if (data.length > 0) return;
     AxiosFetching("get", "get-users-videos", {}, {})
       .then((response) => {
         if (response.data) {
