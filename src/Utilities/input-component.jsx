@@ -16,8 +16,9 @@ export default function InputComponent({ defaultText, name, upperText, placehold
     div.innerText = defaultText ? defaultText : "";
     setContent(defaultText ? defaultText : "");
     setCharacterNum(defaultText ? defaultText.length : 0);
-    dispatch(updateAdditionalData({ [`${name}`]: defaultText }));
-
+    if (defaultText) {
+      dispatch(updateAdditionalData({ [`${name}`]: defaultText }));
+    }
     // Place the caret at the end of the contentEditable div
     const range = document.createRange();
     const sel = window.getSelection();

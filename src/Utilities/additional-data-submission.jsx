@@ -20,21 +20,22 @@ export default function AdditionalDataSubmission() {
     formData.append("videoId", videoId);
     formData.append("title", title || "");
     formData.append("descriptionString", descriptionString || "");
-    formData.append("videoSettings", videoSettings || {});
+    formData.append("videoSettings", videoSettings || null);
     formData.append("category", category || undefined);
     formData.append("visibility", visibility || "Draft");
     formData.append("publishDate", publishDate || undefined);
 
     AxiosFetching("post", "additional-video-data", formData)
       .then((response) => {
-        if (response.data) {
-          dispatch(updateCurrentVideo(response.data.data[1][0]));
-          dispatch(modifyVideos(response.data.data[1][0]));
+        console.log(response.data);
+        if (response.data !== null && response.data.data && response.data.data !== null) {
+          dispatch(updateCurrentVideo(response.data.data));
+          dispatch(modifyVideos(response.data.data));
         }
       })
       .catch((error) => {
         console.error("something went wrong", error);
       });
-  }, [videoData, currentVideoId]);
+  }, [additionalData, currentVideoId]);
   return <></>;
 }

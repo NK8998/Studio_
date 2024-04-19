@@ -13,6 +13,7 @@ export default function UploadBegin() {
 
   function handleChange(event) {
     if (!event.target.files[0]) return;
+    console.log("run");
     const file = event.target.files[0];
     const { name } = file;
     const title = name.split(".").slice(0, -1).join(".");
@@ -49,7 +50,7 @@ export default function UploadBegin() {
   return (
     <div className='upload-interface-wrapper'>
       <div className='middle'>
-        <input type='file' id='fileUpload' name='video' style={{ display: "none" }} onChange={handleChange} />
+        <input type='file' id='fileUpload' name='video' style={{ display: "none" }} onInput={handleChange} />
         <label htmlFor='fileUpload' id='fileUpload-label'>
           <UploadIcon />
         </label>
