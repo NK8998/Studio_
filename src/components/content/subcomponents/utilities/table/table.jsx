@@ -3,6 +3,7 @@ import { DateFormatter } from "../../../../../utilities/date-formatter";
 import { TableVideoComponent } from "./table-video-component";
 import { subscribeToSupabase, updateCurrentVideo, updateCurrentVideoId } from "../../../../../store/Upload-slice";
 import { toggleUploadCard } from "../../../../../store/App-slice";
+import prcessingImg from "../../../../../assets/processing.jpg";
 
 const TableComponent = ({ data, columns }) => {
   const dispatch = useDispatch();
@@ -47,7 +48,13 @@ const TableComponent = ({ data, columns }) => {
           </div>
           <TableVideoComponent
             id={tableData.video_id}
-            thumbnail={tableData.preferred_thumbnail_url ? tableData.preferred_thumbnail_url : tableData.possible_thumbnail_urls["thumbnailUrl-0"]}
+            thumbnail={
+              tableData.preferred_thumbnail_url
+                ? tableData.preferred_thumbnail_url
+                : tableData.possible_thumbnail_urls
+                ? tableData.possible_thumbnail_urls["thumbnailUrl-0"]
+                : prcessingImg
+            }
             title={tableData.title}
             description={tableData.description_string ? tableData.description_string : "Add description"}
             timestamp={tableData.duration_timestamp}

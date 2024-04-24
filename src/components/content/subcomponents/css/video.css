@@ -2,8 +2,10 @@
     width: calc(100% - 0px);
     padding-left: 0px;
     font-size: 13.3px;
-    overflow-x: scroll;
+    overflow-x: auto;
     color: rgb(202, 202, 202);
+    max-height: 550px;
+    overflow-y: scroll;
 
 }
 
