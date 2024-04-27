@@ -4,7 +4,7 @@
     font-size: 13.3px;
     overflow-x: auto;
     color: rgb(202, 202, 202);
-    max-height: 550px;
+    max-height: 60vh;
     overflow-y: scroll;
 
 }
@@ -141,6 +141,84 @@
 .row-video-info{
     padding: 8px 0px;
 }
+
+.row-handler{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    font-size: 13px;
+    color: grey;
+    padding: 8px 0px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.329);
+    border-top:1px solid rgba(128, 128, 128, 0.329) ;
+}
+.row-handler button{
+    background: transparent;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    cursor: pointer;
+    padding: 2px;
+}
+.row-handler button:active{
+    background: rgba(128, 128, 128, 0.301);
+}
+.row-handler button svg{
+    fill: grey;
+}
+.row-count{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+.rows-count-dropdown{
+    position: absolute;
+    bottom: 0;
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(26, 26, 26);
+    visibility: hidden;
+    border-radius: 6px;
+    padding: 8px 0px;
+    right: 0;
+}
+.rows-count-dropdown.show{
+    visibility: visible;
+}
+.row-option{
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    padding: 6px 30px;
+    cursor: pointer;
+}
+.row-option.current{
+    background-color: rgba(0, 0, 0, 0.493);
+}
+
+.current-row-indictor{
+    display: flex;
+    align-items: center;
+    padding: 0px 30px;
+}
+.row-changer{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-right: 40px;
+}
+.row-changer svg{
+    height: 30px;
+    width: 30px;
+    fill: grey;
+    pointer-events: none;
+}
+.row-changer-arrow{
+    cursor: pointer;
+}
 @media(max-width: 1380px){
     .left-row-sticky{
         border-right: 2px solid rgba(128, 128, 128, 0.26);
@@ -163,4 +241,5 @@
 .Likes{
     min-width: 94px;
 } */
+
 

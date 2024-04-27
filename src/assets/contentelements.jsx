@@ -20,3 +20,43 @@ export const UploadThumbIcon = () => {
     </svg>
   );
 };
+
+export const CountDropDown = () => {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'>
+      <path d='M480-360 280-560h400L480-360Z' />
+    </svg>
+  );
+};
+
+export const FirstPage = () => {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'>
+      <path d='M266-266v-428h28v428h-28Zm414-10L476-480l204-204 20 20-184 184 184 184-20 20Z' />
+    </svg>
+  );
+};
+
+export const ChevronLeft = () => {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'>
+      <path d='M560-276 356-480l204-204 20 20-184 184 184 184-20 20Z' />
+    </svg>
+  );
+};
+
+export const LastPage = () => {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'>
+      <path d='m280-276-20-20 184-184-184-184 20-20 204 204-204 204Zm386 10v-428h28v428h-28Z' />
+    </svg>
+  );
+};
+
+export const ChevronRight = () => {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'>
+      <path d='M540-480 356-664l20-20 204 204-204 204-20-20 184-184Z' />
+    </svg>
+  );
+};

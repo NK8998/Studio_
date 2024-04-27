@@ -4,8 +4,28 @@ import { TableVideoComponent } from "./table-video-component";
 import { subscribeToSupabase, updateCurrentVideo, updateCurrentVideoId } from "../../../../../store/Upload-slice";
 import { toggleUploadCard } from "../../../../../store/App-slice";
 import prcessingImg from "../../../../../assets/processing.jpg";
+import { useEffect, useState } from "react";
+import RowHandler from "./row-handler";
 
 const TableComponent = ({ data, columns }) => {
+  const [rows, setRows] = useState(3);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  useEffect(() => {
+    const rowsPerPage = JSON.parse(localStorage.getItem("rowsPerPage")) || 10;
+    setRows(rowsPerPage);
+  }, []);
+
+  function subdivideArray(array, n) {
+    let result = [];
+    for (let i = 0; i < array.length; i += n) {
+      result.push(array.slice(i, i + n));
+    }
+    return result;
+  }
+  const rowGroups = subdivideArray(data, rows) || [];
+  const rowGroupToRender = rowGroups[currentPage] || [];
+
   const dispatch = useDispatch();
   const firstHeader = columns.slice(0, 1);
 
@@ -38,7 +58,7 @@ const TableComponent = ({ data, columns }) => {
     }
   };
 
-  const rowElements = data.map((tableData, index) => {
+  const rowElements = rowGroupToRender.map((tableData, index) => {
     const likeDislikeRatio = (tableData.likes / (tableData.likes + tableData.dislikes)) * 100;
     return (
       <div className='row-data' key={index}>
@@ -84,13 +104,23 @@ const TableComponent = ({ data, columns }) => {
     );
   });
   return (
-    <div className='table-representation'>
-      <div className='column-representations'>
-        {leftSide}
-        <div className='right-side-scrollable'>{rightSide}</div>
+    <>
+      <div className='table-representation'>
+        <div className='column-representations'>
+          {leftSide}
+          <div className='right-side-scrollable'>{rightSide}</div>
+        </div>
+        {rowElements}
       </div>
-      {rowElements}
-    </div>
+      <RowHandler
+        rows={rows}
+        setRows={setRows}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        length={data.length}
+        groupsLength={rowGroups.length}
+      />
+    </>
   );
 };
 
