@@ -192,10 +192,11 @@
     font-size: 17px;
     color: white;
     text-align: center;
-    padding: 6px 30px;
+    padding: 6px 25px;
     cursor: pointer;
 }
-.row-option.current{
+.row-option.current,
+.row-option:hover{
     background-color: rgba(0, 0, 0, 0.493);
 }
 

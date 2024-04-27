@@ -18,14 +18,19 @@ export default function RowHandler({ rows, setRows, currentPage, setCurrentPage,
     document.addEventListener("click", handleRemovingDropdown);
   };
 
-  const rowOptions = [3, 6, 9];
+  const rowOptions = [10, 30, 50];
 
   const pickerElements = rowOptions.map((rowOption) => {
     return (
       <div
         className={`row-option ${rowOption === rows ? "current" : ""}`}
         onClick={() => {
-          setCurrentPage(0);
+          let curPage = 1;
+          if (currentPage !== 0) {
+            const totalShown = Math.min((currentPage + 1) * rows, length);
+            curPage = Math.ceil(totalShown / rowOption);
+          }
+          setCurrentPage(curPage - 1);
           setRows(rowOption);
           localStorage.setItem("rowsPerPage", JSON.stringify(rowOption));
         }}
@@ -35,10 +40,9 @@ export default function RowHandler({ rows, setRows, currentPage, setCurrentPage,
       </div>
     );
   });
-
   const startingnumber = currentPage * rows + 1;
 
-  let totalShown = Math.min((currentPage + 1) * rows, length);
+  const totalShown = Math.min((currentPage + 1) * rows, length);
 
   return (
     <div className='row-handler'>
