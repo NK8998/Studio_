@@ -18,7 +18,7 @@ export default function RowHandler({ rows, setRows, currentPage, setCurrentPage,
     document.addEventListener("click", handleRemovingDropdown);
   };
 
-  const rowOptions = [10, 30, 50];
+  const rowOptions = [2, 4, 6];
 
   const pickerElements = rowOptions.map((rowOption) => {
     return (

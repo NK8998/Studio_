@@ -4,7 +4,11 @@ export default function SectionSelector({ curSection, setCurSection }) {
   const elements = sections.map((section, index) => {
     return (
       <>
-        <button className={`section-button-selector ${curSection === index ? "active" : ""} `} onClick={() => setCurSection(index)} key={index}>
+        <button
+          className={`section-button-selector ${curSection === index ? "active" : ""} `}
+          onClick={() => setCurSection(index)}
+          key={`${index}-button`}
+        >
           <p>{section}</p>
           <div className='indicator-container'>
             <div className='indicator'></div>
