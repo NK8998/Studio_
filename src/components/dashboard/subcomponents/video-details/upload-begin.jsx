@@ -9,7 +9,7 @@ import { toggleUploadCard } from "../../../../store/App-slice";
 export default function UploadBegin() {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth.userData);
-  const { channel_id, handle, display_name } = userData;
+  const { channel_id, handle, display_name, pfp_url } = userData;
 
   function handleChange(event) {
     if (!event.target.files[0]) return;
@@ -29,6 +29,7 @@ export default function UploadBegin() {
     formData.append("title", name);
     formData.append("channelId", channel_id);
     formData.append("videoId", videoId);
+    formData.append("pfpUrl", pfp_url);
 
     const config = {
       onUploadProgress: function (progressEvent) {
