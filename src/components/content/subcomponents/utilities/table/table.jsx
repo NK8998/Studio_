@@ -61,7 +61,7 @@ const TableComponent = ({ data, columns }) => {
   const rowElements = rowGroupToRender.map((tableData, index) => {
     const likeDislikeRatio = (tableData.likes / (tableData.likes + tableData.dislikes)) * 100;
     return (
-      <div className='row-data' key={index}>
+      <div className='row-data' key={`${index}-${tableData.video_id}`}>
         <div className={`left-row-sticky row-column first-col `}>
           <div className='row-selector-container'>
             <div className='secondary-selector row-selector'></div>
