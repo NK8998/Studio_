@@ -119,6 +119,7 @@
     background-color: red;
 }
 .table-row-video-data{
+    overflow: hidden;
     letter-spacing: -.1px;
     font-size: 13px;
     display: flex;
@@ -140,6 +141,7 @@
 }
 .row-video-info{
     padding: 8px 0px;
+    min-width: 0;
 }
 
 .row-handler{
