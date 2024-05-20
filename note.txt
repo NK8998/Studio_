@@ -5,7 +5,7 @@
 -----------------------------'--------------------------------
 -----------------------------
 
-Move state to redux store  and move the editing panel up the tree
+Move state to redux store and move the editing panel up the tree
 
 '--------------------------------
 -----------------------------'--------------------------------

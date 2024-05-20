@@ -16,10 +16,10 @@ const Content = () => {
   return (
     <div className='content'>
       <div className='content-wrapper'>
+        <div className='content-upper-top'>
+          <p>Channel content</p>
+        </div>
         <div className='content-upper'>
-          <div className='content-upper-top'>
-            <p>Channel content</p>
-          </div>
           <div className='route--buttons'>
             <button
               className={`route--button`}

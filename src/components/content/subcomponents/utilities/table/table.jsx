@@ -138,8 +138,9 @@ const TableComponent = ({ data, columns }) => {
   return (
     <>
       <EditVideosBulk selectedIds={selectedIds} />
+
       <div className='table-representation'>
-        <div className='column-representations'>
+        <div className={`column-representations ${selectedIds.length > 0 ? "edit-video-bulk-showing" : ""} `}>
           {leftSide}
           <div className='right-side-scrollable'>{rightSide}</div>
         </div>

@@ -2,7 +2,6 @@
     width: calc(100% - 0px);
     padding-left: 0px;
     font-size: 13.3px;
-    overflow-x: auto;
     color: rgb(202, 202, 202);
     height: fit-content;
 
@@ -41,9 +40,22 @@
 .column-representations{
     white-space: nowrap;
     position: sticky;
-    top: 0;
+    top: 91px;
     z-index: 10;
-    background-color: rgb(32, 32, 32);
+    background-color: rgb(39, 39, 39);
+    transition: top 300ms ease;
+}
+.column-representations.edit-video-bulk-showing{
+    top: 151px;
+}
+
+.edit-video-bulk{
+    transition: height 300ms ease;
+    background-color: white;
+    height: 0px;
+    position: sticky;
+    top: 91px;
+    z-index: 22;
 }
 .edit-draft{
     font-size: 14px;
@@ -80,11 +92,7 @@
 
 
 }
-.edit-video-bulk{
-    transition: height 300ms ease;
-    background-color: white;
-    height: 0px;
-}
+
 .edit-video-bulk.show{
     height: 60px;
 }
@@ -301,10 +309,10 @@
     opacity: 1;
     border-radius: 50%;
   }
-  .checkbox-wrapper-46 .cbx:hover span:first-child {
+  /* .checkbox-wrapper-46 .cbx:hover span:first-child {
     border-color: white;
   }
-  
+   */
   .checkbox-wrapper-46 .checkbox-row-data.checked + .cbx span:first-child {
     background: white;
     border-color: white;

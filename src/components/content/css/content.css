@@ -13,6 +13,12 @@
     padding: 25px 35px;
 }
 
+.content-upper{
+    position: sticky;
+    top: 0px;
+    z-index: 22;
+    background-color: rgb(39, 39, 39);
+}
 .route--buttons{
     display: flex;
     gap: 4em;
