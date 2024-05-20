@@ -5,6 +5,10 @@
     overflow-y: auto;
 }
 
+.content-wrapper{
+    width: fit-content;
+}
+
 .content-upper-top{
     color: white;
     font-size: 23px;
