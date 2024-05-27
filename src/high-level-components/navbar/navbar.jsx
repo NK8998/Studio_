@@ -9,8 +9,7 @@ import { toggleNavigationBar } from "../../store/App-slice";
 
 export const Navbar = ({}) => {
   const dispatch = useDispatch();
-  const currentChannelId = useSelector((state) => state.auth.userData.currentChannelId);
-  const { pfp_url } = useSelector((state) => state.auth.userData);
+  const { pfp_url, channel_id } = useSelector((state) => state.auth.userData);
   const [datalistDropdownOpen, setDataListDropdown] = useState(false);
 
   const inputRef = useRef();
@@ -27,7 +26,7 @@ export const Navbar = ({}) => {
         <div className='burger' onClick={() => dispatch(toggleNavigationBar())}>
           <Burger />
         </div>
-        <Link to={`/channel/${currentChannelId}`}>
+        <Link to={`/channel/${channel_id}`}>
           <img src='https://www.gstatic.com/youtube/img/creator/yt_studio_logo_white.svg' alt='studiologo' />
         </Link>
       </div>

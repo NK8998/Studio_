@@ -3,7 +3,7 @@ export default function SectionSelector({ curSection, setCurSection }) {
 
   const elements = sections.map((section, index) => {
     return (
-      <>
+      <div>
         <button
           className={`section-button-selector ${curSection === index ? "active" : ""} `}
           onClick={() => setCurSection(index)}
@@ -15,7 +15,7 @@ export default function SectionSelector({ curSection, setCurSection }) {
           </div>
         </button>
         {index > 0 && <div className={`line-indicator num-${index} ${index <= curSection ? "active" : ""}`} key={`${index}-line`}></div>}
-      </>
+      </div>
     );
   });
   return (
