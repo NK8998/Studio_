@@ -1,4 +1,8 @@
-export default function CheckComponent({ id, selectedIds }) {
+import { useSelector } from "react-redux";
+
+export default function CheckComponent({ id }) {
+  const selectedIds = useSelector((state) => state.table.selectedIds);
+
   const isChecked = selectedIds.includes(id);
 
   return (
@@ -15,7 +19,8 @@ export default function CheckComponent({ id, selectedIds }) {
   );
 }
 
-export function MainCheckComponent({ selectedIds, rowGroupToRender, allSelected }) {
+export function MainCheckComponent({ rowGroupToRender, allSelected }) {
+  const selectedIds = useSelector((state) => state.table.selectedIds);
   const isChecked = allSelected;
   const isCheckedButHasUnselectedSome = selectedIds.length < rowGroupToRender.length;
 

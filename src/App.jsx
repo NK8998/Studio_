@@ -20,6 +20,8 @@ import { LeftNav } from "./high-level-components/leftnav/leftnav";
 import { Navbar } from "./high-level-components/navbar/navbar";
 import AdditionalDataSubmission from "./utilities/additional-data-submission";
 import { Shorts } from "./components/content/subcomponents/shorts";
+import { DeleteHandler } from "./components/content/subcomponents/utilities/table/edit-videos/components/more-actions";
+import { Toaster } from "sonner";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -36,6 +38,7 @@ function App() {
   const names = ["Manu", "fpp", 1234, "ate"];
   return isLoggedIn ? (
     <>
+      <Toaster position='bottom-center' expand={true} />
       <div className='page--manager'>
         <Navbar />
         <div className='leftnav--and--route--handler'>
@@ -61,6 +64,7 @@ function App() {
       </div>
       <UploadCard />
       <AdditionalDataSubmission />
+      <DeleteHandler />
     </>
   ) : (
     <div className='waiting--page'>
