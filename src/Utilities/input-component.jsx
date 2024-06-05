@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateAdditionalData } from "../store/Upload-slice";
 import { PosEnd } from "./place-caret-at-end";
 
+const timeout = 1000;
+
 export default function InputComponent({ defaultText, name, upperText, placeholder, limit }) {
   const [charactersNum, setCharacterNum] = useState(0);
   const [content, setContent] = useState("");
@@ -37,7 +39,7 @@ export default function InputComponent({ defaultText, name, upperText, placehold
       clearTimeout(timeoutRef.current);
     }
     const input = event.target.innerText;
-    console.log(input);
+    // console.log(input);
     if (input.length > limit) {
       // Prevent adding more characters
       const limitedContent = input.slice(0, limit);
@@ -54,14 +56,14 @@ export default function InputComponent({ defaultText, name, upperText, placehold
 
       timeoutRef.current = setTimeout(() => {
         dispatch(updateAdditionalData({ [`${name}`]: `${limitedContent}` }));
-      }, 600);
+      }, timeout);
     } else {
       // Update the state with the new number of characters
       setCharacterNum(input.length);
       setContent(input);
       timeoutRef.current = setTimeout(() => {
         dispatch(updateAdditionalData({ [`${name}`]: `${input}` }));
-      }, 600);
+      }, timeout);
     }
   };
 

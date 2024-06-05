@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AxiosFetching from "../axios/axios-function";
-import { updateCurrentVideo } from "../store/Upload-slice";
+import { toggleSaving, updateCurrentVideo } from "../store/Upload-slice";
 import { modifyVideos } from "../store/Videos-slice";
 
 export default function AdditionalDataSubmission() {
@@ -14,6 +14,7 @@ export default function AdditionalDataSubmission() {
 
   useEffect(() => {
     if (!currentVideoId || !videoId || !title) return;
+    dispatch(toggleSaving(true));
     const formData = new FormData();
     formData.append("thumbnailString", thumbnailString || undefined);
     thumbnailBlob ? formData.append("thumbnailBlob", document.getElementById("thumbnailBlob").files[0]) : formData.append("thumbnailBlob", undefined);
@@ -27,6 +28,8 @@ export default function AdditionalDataSubmission() {
 
     AxiosFetching("post", "additional-video-data", formData)
       .then((response) => {
+        dispatch(toggleSaving(false));
+
         console.log(response.data);
         if (response.data === null) return;
         if (response.data.data && response.data.data !== null) {
@@ -35,6 +38,8 @@ export default function AdditionalDataSubmission() {
         }
       })
       .catch((error) => {
+        dispatch(toggleSaving(false));
+
         console.error("something went wrong", error);
       });
   }, [additionalData, currentVideoId]);

@@ -8,7 +8,9 @@ export default function TopPart() {
   const dispatch = useDispatch();
   const { title } = useSelector((state) => state.upload.currentVideo);
   const currentVideoId = useSelector((state) => state.upload.currentVideoId);
+  const saving = useSelector((state) => state.upload.saving);
   const removeUploadCard = () => {
+    if (saving) return;
     dispatch(toggleUploadCard());
     dispatch(updateCurrentVideoId(""));
     dispatch(updateCurrentVideo({ video_id: "" }));

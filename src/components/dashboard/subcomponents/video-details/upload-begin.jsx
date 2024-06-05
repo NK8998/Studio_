@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { FeedbackIcon } from "../../../../assets/leftnavelements";
-import { CloseIcon, UploadIcon } from "../../../../assets/uploadcardelements";
+import { UploadIcon } from "../../../../assets/uploadcardelements";
 import AxiosFetching from "../../../../axios/axios-function";
 import { nanoid } from "@reduxjs/toolkit";
 import { subscribeToSupabase, updateCurrentVideo, updateCurrentVideoId } from "../../../../store/Upload-slice";
-import { toggleUploadCard } from "../../../../store/App-slice";
 
 export default function UploadBegin() {
   const dispatch = useDispatch();

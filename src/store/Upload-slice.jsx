@@ -8,6 +8,7 @@ const uploadSlice = createSlice({
     currentVideoId: "",
     currentVideo: {},
     additionalData: {},
+    saving: false,
   },
   reducers: {
     updateCurrentVideo: (state, action) => {
@@ -23,10 +24,13 @@ const uploadSlice = createSlice({
     resetAdditionalData: (state, action) => {
       state.additionalData = {};
     },
+    toggleSaving: (state, action) => {
+      state.saving = action.payload;
+    },
   },
 });
 
-export const { updateCurrentVideo, updateCurrentVideoId, updateAdditionalData, resetAdditionalData } = uploadSlice.actions;
+export const { updateCurrentVideo, updateCurrentVideoId, updateAdditionalData, resetAdditionalData, toggleSaving } = uploadSlice.actions;
 
 export default uploadSlice.reducer;
 
