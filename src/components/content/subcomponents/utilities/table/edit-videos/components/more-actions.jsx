@@ -34,7 +34,8 @@ export default function MoreActions() {
       toast.info("Download URL for this video is not available");
       return;
     }
-    const downloadableUrl = downloadables["downloadableUrl-0"];
+    const urls = Object.values(downloadables).sort();
+    const downloadableUrl = urls[urls.length - 1];
 
     // Optional: Sanitize filename before using it for download
     const filename = video.title; // Replace with your sanitization function
