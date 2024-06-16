@@ -34,11 +34,18 @@ export default function MoreActions() {
       toast.info("Download URL for this video is not available");
       return;
     }
-    const urls = Object.values(downloadables).sort();
+    const urls = Object.values(downloadables).sort((a, b) => {
+      // Extract resolution number from the URL using a regex
+      let resA = parseInt(a.match(/video-(\d+)/)[1], 10);
+      let resB = parseInt(b.match(/video-(\d+)/)[1], 10);
+
+      // Compare resolution numbers numerically
+      return resA - resB;
+    });
+
     const downloadableUrl = urls[urls.length - 1];
 
-    // Optional: Sanitize filename before using it for download
-    const filename = video.title; // Replace with your sanitization function
+    const filename = video.title;
 
     const link = document.createElement("a");
     link.href = downloadableUrl;

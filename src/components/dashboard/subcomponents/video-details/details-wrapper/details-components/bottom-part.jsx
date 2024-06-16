@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 
 export default function DetailsBottom() {
-  const { percentCompleted, uploadState, mpd_url } = useSelector((state) => state.upload.currentVideo);
+  const { percentCompleted, uploadState } = useSelector((state) => state.upload.currentVideo);
 
   return (
     <div className='details-bottom'>
       <div>
-        <p>{!mpd_url ? "Processing" : ""}</p>
-        <p>{`${uploadState ? uploadState : ""} ${percentCompleted ? percentCompleted : ""}`}</p>
+        <p>{uploadState}</p>
+        <p>{percentCompleted ? `percent completed: ${percentCompleted}` : ""}</p>
       </div>
     </div>
   );
