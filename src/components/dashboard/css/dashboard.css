@@ -4,6 +4,7 @@
     background-color: rgb(31, 31, 31);
     padding: 15px 25px;
     max-width: calc(100vw - 50px);
+    overflow-y: auto;
    
 
 }
@@ -98,6 +99,7 @@
     /* width: 60vw; */
     min-width: 960px;
     height: 730px;
+    max-height: calc(100vh - 20px);
     background-color: rgb(36, 36, 36);
     top: 50%;
     left: 50%;
