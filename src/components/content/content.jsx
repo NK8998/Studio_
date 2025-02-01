@@ -3,7 +3,7 @@ import "./css/content.css";
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import withTransition from "../../utilities/transition";
+import withTransition from "../../Utilities/transition";
 
 const Content = () => {
   const { channel_id } = useSelector((state) => state.auth.userData);

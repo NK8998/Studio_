@@ -1,12 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { DateFormatter } from "../../../../../utilities/date-formatter";
+import { DateFormatter } from "../../../../../Utilities/date-formatter";
 import { TableVideoComponent } from "./table-video-component";
-import { subscribeToSupabase, updateCurrentVideo, updateCurrentVideoId } from "../../../../../store/Upload-slice";
+import {
+  subscribeToSupabase,
+  updateCurrentVideo,
+  updateCurrentVideoId,
+} from "../../../../../store/Upload-slice";
 import { toggleUploadCard } from "../../../../../store/App-slice";
 import prcessingImg from "../../../../../assets/processing.jpg";
 import { useEffect, useRef, useState } from "react";
 import RowHandler from "./row-handler";
-import CheckComponent, { MainCheckComponent } from "../check-component/check-component";
+import CheckComponent, {
+  MainCheckComponent,
+} from "../check-component/check-component";
 import EditVideosBulk from "./edit-videos/edit-videos-bulk";
 import { updateSelectedIds } from "../../../../../store/Table-slice";
 
@@ -45,7 +51,10 @@ const TableComponent = ({ data, columns }) => {
         allSelected.current = true;
         return;
       } else if (allSelected.current === true) {
-        if (selectedIds.length > 0 && selectedIds.length < rowGroupToRender.length) {
+        if (
+          selectedIds.length > 0 &&
+          selectedIds.length < rowGroupToRender.length
+        ) {
           const allIds = rowGroupToRender.map((video) => video.video_id);
           dispatch(updateSelectedIds(allIds));
           return;
@@ -68,7 +77,10 @@ const TableComponent = ({ data, columns }) => {
     return (
       <div className='left-row-sticky  row-column first-col' key={index}>
         <div className='row-selector-container' onClick={() => appendId("all")}>
-          <MainCheckComponent rowGroupToRender={rowGroupToRender} allSelected={allSelected.current} />
+          <MainCheckComponent
+            rowGroupToRender={rowGroupToRender}
+            allSelected={allSelected.current}
+          />
         </div>
         <p className={header}>{header}</p>
       </div>
@@ -94,11 +106,15 @@ const TableComponent = ({ data, columns }) => {
   };
 
   const rowElements = rowGroupToRender.map((tableData, index) => {
-    const likeDislikeRatio = (tableData.likes / (tableData.likes + tableData.dislikes)) * 100;
+    const likeDislikeRatio =
+      (tableData.likes / (tableData.likes + tableData.dislikes)) * 100;
     return (
       <div className='row-data' key={`${index}-${tableData.video_id}`}>
         <div className={`left-row-sticky row-column first-col `}>
-          <div className='row-selector-container' onClick={() => appendId(tableData.video_id)}>
+          <div
+            className='row-selector-container'
+            onClick={() => appendId(tableData.video_id)}
+          >
             <CheckComponent id={tableData.video_id} />
           </div>
 
@@ -112,18 +128,35 @@ const TableComponent = ({ data, columns }) => {
                 : prcessingImg
             }
             title={tableData.title}
-            description={tableData.description_string ? tableData.description_string : "Add description"}
+            description={
+              tableData.description_string
+                ? tableData.description_string
+                : "Add description"
+            }
             timestamp={tableData.duration_timestamp}
           />
         </div>
         <div className='right-side-scrollable'>
-          <div className={`row-visibility row-column Visibility`}>{tableData.visibility}</div>
-          <div className='row-restriction row-column Restriction'>{tableData.restrictions}</div>
-          <div className='row-date row-column Date'>{tableData.visibility !== "Draft" && DateFormatter(tableData.created_at)}</div>
-          <div className='row-views row-column Views'>{tableData.visibility !== "Draft" && tableData.views}</div>
-          <div className='row-views row-column Comments'>{tableData.visibility !== "Draft" && tableData.comments}</div>
+          <div className={`row-visibility row-column Visibility`}>
+            {tableData.visibility}
+          </div>
+          <div className='row-restriction row-column Restriction'>
+            {tableData.restrictions}
+          </div>
+          <div className='row-date row-column Date'>
+            {tableData.visibility !== "Draft" &&
+              DateFormatter(tableData.created_at)}
+          </div>
+          <div className='row-views row-column Views'>
+            {tableData.visibility !== "Draft" && tableData.views}
+          </div>
+          <div className='row-views row-column Comments'>
+            {tableData.visibility !== "Draft" && tableData.comments}
+          </div>
           <div className='row-likes-dislikes-ratio row-column Likes'>
-            <p>{tableData.visibility !== "Draft" && `${likeDislikeRatio || 0}%`}</p>
+            <p>
+              {tableData.visibility !== "Draft" && `${likeDislikeRatio || 0}%`}
+            </p>
           </div>
         </div>
         {tableData.visibility === "Draft" && (
@@ -143,7 +176,11 @@ const TableComponent = ({ data, columns }) => {
     <>
       <EditVideosBulk selectedIds={selectedIds} />
       <div className='table-representation'>
-        <div className={`column-representations ${selectedIds.length > 0 ? "edit-video-bulk-showing" : ""} `}>
+        <div
+          className={`column-representations ${
+            selectedIds.length > 0 ? "edit-video-bulk-showing" : ""
+          } `}
+        >
           {leftSide}
           <div className='right-side-scrollable'>{rightSide}</div>
         </div>

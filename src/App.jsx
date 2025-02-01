@@ -18,7 +18,7 @@ import { Podcasts } from "./components/content/subcomponents/podcasts";
 import { UploadCard } from "./components/dashboard/subcomponents/firstcard";
 import { LeftNav } from "./high-level-components/leftnav/leftnav";
 import { Navbar } from "./high-level-components/navbar/navbar";
-import AdditionalDataSubmission from "./utilities/additional-data-submission";
+import AdditionalDataSubmission from "./Utilities/additional-data-submission";
 import { Shorts } from "./components/content/subcomponents/shorts";
 import { DeleteHandler } from "./components/content/subcomponents/utilities/table/edit-videos/components/more-actions";
 import { Toaster } from "sonner";
@@ -53,10 +53,22 @@ function App() {
                 <Route path={`playlists`} element={<Playlists />} />
                 <Route path={`podcasts`} element={<Podcasts />} />
               </Route>
-              <Route path='/channel/:channelId/analytics' element={<Analytics names={names} />} />
-              <Route path='/channel/:channelId/comments' element={<Comments />} />
-              <Route path='/channel/:channelId/subtitles' element={<Subtitles />} />
-              <Route path='/channel/:channelId/editing' element={<Customization />} />
+              <Route
+                path='/channel/:channelId/analytics'
+                element={<Analytics names={names} />}
+              />
+              <Route
+                path='/channel/:channelId/comments'
+                element={<Comments />}
+              />
+              <Route
+                path='/channel/:channelId/subtitles'
+                element={<Subtitles />}
+              />
+              <Route
+                path='/channel/:channelId/editing'
+                element={<Customization />}
+              />
               <Route path='*' element={<NotFound />} />
             </Routes>
           </div>
