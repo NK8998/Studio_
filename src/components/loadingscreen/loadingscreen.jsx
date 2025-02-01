@@ -34,9 +34,9 @@ export const LoadingScreen = () => {
       (response) => {
         if (response.data) {
           if (response.data.redirect === true) {
-            window.location.href = `${import.meta.env.VITE_BASE_URL}?redirect=${
-              window.location.href
-            }`;
+            window.location.href = `${
+              import.meta.env.VITE_OAUTH_URL
+            }?redirect=${window.location.href}`;
             return;
           }
           if (response.data.message !== "verified") {
@@ -59,7 +59,7 @@ export const LoadingScreen = () => {
     AxiosFetching("get", "Set-cookie", {}).then((response) => {
       if (response.data) {
         if (response.data.redirect === true) {
-          window.location.href = `${import.meta.env.VITE_BASE_URL}?redirect=${
+          window.location.href = `${import.meta.env.VITE_OAUTH_URL}?redirect=${
             window.location.href
           }`;
         } else {
