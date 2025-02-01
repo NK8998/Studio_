@@ -1,6 +1,15 @@
 import axios from "axios";
+import { getBaseURL } from "../Utilities/getBaseURL";
 
-export default async function AxiosFetching(method, endpoint, formData, additionalConfig = {}, backendUrl = "http://localhost:8220") {
+const baseURL = getBaseURL();
+
+export default async function AxiosFetching(
+  method,
+  endpoint,
+  formData,
+  additionalConfig = {},
+  backendUrl = baseURL
+) {
   try {
     const config = {
       method: method,
