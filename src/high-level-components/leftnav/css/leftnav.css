@@ -62,16 +62,17 @@ a{
     flex-direction: column;
     gap: .5em;
 }
+
 .leftnav-upper-lower.expand{
     height: 41px;
     opacity: 1;
     transition: opacity 0ms linear 0.2s, height 200ms ease-in-out ;
-    
-    
+    pointer-events: all;
 }
 .leftnav-upper-lower.collapse{
     height: 0px;
     opacity: 0;
+    pointer-events: none;
     
 }
 
