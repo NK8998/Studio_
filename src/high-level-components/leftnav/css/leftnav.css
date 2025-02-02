@@ -63,9 +63,9 @@ a{
     gap: .5em;
 }
 .leftnav-upper-lower.expand{
-    height: fit-content;
+    height: 41px;
     opacity: 1;
-    transition: opacity 0ms linear 0.2s;
+    transition: opacity 0ms linear 0.2s, height 200ms ease-in-out ;
     
     
 }
@@ -95,10 +95,10 @@ a{
 
 
 .leftnav-middle.expand{
-    transform: translateY(18px);
+    margin-top: 18px;
 }
 .leftnav-middle.collapse{
-    transform: translateY(0px);
+    margin-top: 0px;
     border-bottom: 1px solid rgba(128, 128, 128, 0);
 
 }
