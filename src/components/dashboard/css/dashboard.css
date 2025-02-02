@@ -246,11 +246,11 @@
 }
 .details-wrapper-inner{
     flex-grow: 1;
+    height: 100%;
+    overflow-y: auto;
 }
 .details-inner{
     padding: 10px 30px;
-    max-height: 420px;
-    overflow-y: scroll;
     height: fit-content;
     display: none;
 }
@@ -258,11 +258,29 @@
     display: block;
 }
 .details-bottom{
-    padding: 17px 20px;
+    padding: 10px 20px;
     border-top: 1px solid rgba(252, 252, 252, 0.041);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    font-size: 13px;
+}
+.details-bottom .upload-state{
+    text-transform: capitalize;
+}
+.details-bottom .percentage{
+    color: #3ea6ff;
+    background-color: #3ea5ff25;
+    padding: 2px 5px;
+    border-radius: 3px;
 }
 .section-selector{
+    position: sticky;
+    top: 0;
+    background-color: rgb(36, 36, 36);
     padding: 0px 30px;
+    z-index: 10;
 }
 .section-selector .sections{
     display: flex;

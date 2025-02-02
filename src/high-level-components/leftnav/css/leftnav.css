@@ -56,6 +56,7 @@ a{
     width: 33px;
 
 }
+
 .leftnav-upper-lower{
     text-align: center;
     display: flex;
@@ -66,14 +67,16 @@ a{
 .leftnav-upper-lower.expand{
     height: 41px;
     opacity: 1;
-    transition: opacity 0ms linear 0.2s, height 200ms ease-in-out ;
     pointer-events: all;
+    transition: opacity 0ms linear 0.2s, height 200ms ease-in-out ;
+
 }
+
 .leftnav-upper-lower.collapse{
     height: 0px;
     opacity: 0;
     pointer-events: none;
-    
+    transition: opacity 0ms linear 0s, height 200ms ease-in-out ;
 }
 
 .leftnav-upper-lower .upper-p{
@@ -161,6 +164,7 @@ a{
     opacity: 0;
     white-space: nowrap;
 }
+
 .leftnav-bottom{
     position: relative;
     z-index: 2;

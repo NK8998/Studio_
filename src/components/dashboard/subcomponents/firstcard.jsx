@@ -10,8 +10,14 @@ export const FirstCard = () => {
     <>
       <div className='firstcard card'>
         <div className='innner-card'>
-          <img src='https://www.gstatic.com/youtube/img/creator/no_content_illustration_upload_video_v3_darkmode.svg' alt='download illustration' />
-          <p>Want to see metrics on your recent video? Upload and publish a video to get started.</p>
+          <img
+            src='https://www.gstatic.com/youtube/img/creator/no_content_illustration_upload_video_v3_darkmode.svg'
+            alt='download illustration'
+          />
+          <p>
+            Want to see metrics on your recent video? Upload and publish a video
+            to get started.
+          </p>
           <button type='button' onClick={() => dispatch(toggleUploadCard())}>
             Upload videos
           </button>
