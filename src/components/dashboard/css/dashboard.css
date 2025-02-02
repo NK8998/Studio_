@@ -249,8 +249,9 @@
 }
 .details-inner{
     padding: 10px 30px;
-    max-height: 515px;
+    max-height: 420px;
     overflow-y: scroll;
+    height: fit-content;
     display: none;
 }
 .details-inner.visible{
