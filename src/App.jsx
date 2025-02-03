@@ -22,9 +22,12 @@ import AdditionalDataSubmission from "./Utilities/additional-data-submission";
 import { Shorts } from "./components/content/subcomponents/shorts";
 import { DeleteHandler } from "./components/content/subcomponents/utilities/table/edit-videos/components/more-actions";
 import { Toaster } from "sonner";
+import NotAllowed from "./components/not-allowed/not-allowed";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const authenticated = useSelector((state) => state.auth.authenticated);
+  const isAllowed = useSelector((state) => state.auth.isAllowed);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,7 +39,19 @@ function App() {
   }, []);
 
   const names = ["Manu", "fpp", 1234, "ate"];
-  return isLoggedIn ? (
+  if (!authenticated) {
+    return (
+      <div className='waiting--page'>
+        <LoadingScreen />
+      </div>
+    );
+  }
+
+  if (!isAllowed) {
+    return <NotAllowed />;
+  }
+
+  return (
     <>
       <Toaster position='bottom-center' expand={true} />
       <div className='page--manager'>
@@ -78,10 +93,6 @@ function App() {
       <AdditionalDataSubmission />
       <DeleteHandler />
     </>
-  ) : (
-    <div className='waiting--page'>
-      <LoadingScreen />
-    </div>
   );
 }
 
