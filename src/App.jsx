@@ -40,11 +40,7 @@ function App() {
 
   const names = ["Manu", "fpp", 1234, "ate"];
   if (!authenticated) {
-    return (
-      <div className='waiting--page'>
-        <LoadingScreen />
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   if (!isAllowed) {
