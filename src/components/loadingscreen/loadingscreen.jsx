@@ -8,7 +8,7 @@ import {
   userLoggedIn,
 } from "../../store/Auth-slice";
 import axios from "axios";
-import AxiosFetching from "../../axios/axios-function";
+import AxiosFetching from "../../axios/axios-function"; 
 
 export const LoadingScreen = () => {
   const [gettingLong, setGettingLong] = useState(false);
