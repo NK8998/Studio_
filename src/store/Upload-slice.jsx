@@ -43,6 +43,7 @@ export const subscribeToSupabase = (video_id) => {
       .subscribe();
 
     function handleRecordUpdated(data) {
+      console.log(data);
       const currentVideoData = getState().upload.currentVideo;
       const currentVideoId = getState().upload.currentVideoId;
       if (currentVideoId === data.new.video_id) {
