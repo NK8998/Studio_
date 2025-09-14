@@ -9,10 +9,10 @@ import {
 } from "../../store/Auth-slice";
 import axios from "axios";
 import AxiosFetching from "../../axios/axios-function";
+import LoadingTxt from "./loading-txt";
+import ReloadBtn from "./reload-btn";
 
 export const LoadingScreen = () => {
-  const [gettingLong, setGettingLong] = useState(false);
-  const [tooLong, setToolong] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -22,13 +22,6 @@ export const LoadingScreen = () => {
 
   useEffect(() => {
     verifyCredentials();
-
-    setTimeout(() => {
-      setGettingLong(true);
-    }, 6000);
-    setTimeout(() => {
-      setToolong(true);
-    }, 12000);
   }, []);
 
   const verifyCredentials = () => {
@@ -80,6 +73,9 @@ export const LoadingScreen = () => {
   return (
     <div className='loadingscreen'>
       <div className='masthead-skeleton'>
+        <div className='start'>
+          <div className='m-circle bar'></div>
+        </div>
         <div className='end'>
           <div className='m-circle'></div>
           <div className='m-circle bar'></div>
@@ -87,23 +83,8 @@ export const LoadingScreen = () => {
         </div>
       </div>
       <div className='loading-text'>
-        <h2>Please give it some time. It will be worth it I promise.</h2>
-        {gettingLong && (
-          <p className='loading-text-para'>
-            This is a project I made to showcase my skills. It is a YouTube
-            clone with a few features. It is largely inspired by YouTube's UI so
-            there might be some similarities😂. This is the Studio to allow for
-            video uploads and more.
-          </p>
-        )}
-        {tooLong && (
-          <div className='taking-long-text'>
-            <p>It appears to be taking forever. Try reloading👇.</p>
-            <button onClick={handleReload} className='reload'>
-              Reload
-            </button>
-          </div>
-        )}
+        <LoadingTxt />
+        <ReloadBtn onClick={handleReload} />
       </div>
     </div>
   );
